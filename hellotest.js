@@ -25,6 +25,16 @@ app.get('/time',function(req,res){
   res.render('time', genContext());
 });
 
+app.get('/get-loopback-improved',function(req,res){
+  var qParams = [];
+  for (var p in req.query){
+    qParams.push({'name':p,'value':req.query[p]})
+  }
+  var context = {};
+  context.dataList = qParams;
+  res.render('get-loopback-improved', context);
+});
+
 app.use(function(req,res){
   res.status(404);
   res.render('404');
