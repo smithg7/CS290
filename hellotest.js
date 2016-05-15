@@ -26,10 +26,12 @@ app.get('/time',function(req,res){
 });
 
 app.get('/get-loopback-improved',function(req,res){
-  var qParams = [];
+  var qParams = "";
   for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]})
+    qParams += "The name " + p + " contains the value " + req.query[p] + ", ";
   }
+  qParams = qParams.substring(0,qParams.lastIndexOf(','));
+  qParams += '.';
   var context = {};
   context.dataList = qParams;
   res.render('get-loopback-improved', context);
