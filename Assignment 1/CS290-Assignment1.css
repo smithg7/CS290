@@ -1,0 +1,45 @@
+/**********************
+ Author: Gary Smith
+ CS 290 - Assignment 1
+ CSS for CS290-Assignment1.html
+ *********************/
+
+table {
+    border-style:solid;
+    border-width:2px;
+}
+
+tbody tr:nth-of-type(odd) {
+    background: lightblue;
+}
+
+tbody tr:nth-of-type(even) {
+    background: lightcoral;
+}
+
+td {
+    border-style:solid;
+    border-width:1px;
+
+}
+
+th {
+    border-style:solid;
+    border-width:1px;
+}
+
+.outer-content {
+    width:75%;
+    background-color:pink;
+    margin-top:20px;
+    padding:20px;
+    position:relative;
+    left:0px;
+}
+
+#inner-content {
+    width:75%;
+    background-color:lightblue;
+    margin:auto;
+    text-align:center;
+}

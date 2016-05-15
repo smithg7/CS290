@@ -1,0 +1,137 @@
+﻿<!-- 
+ Author: Gary Smith
+ CS 290 - Assignment 1
+ HTML for Assignment 1
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Gary Smith (gsmith1) CS290 Assignment 1</title>
+        <link rel="stylesheet" href="cs290-assignment1.css" type="text/css">
+    </head>
+    <body>
+        <table>
+                <caption>This is a table of car information</caption>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Color</th>
+                        <th>Drivetrain</th>
+                        <th>Horsepower</th>
+                        <th>Torque</th>
+                        <th>Desirability (1-100)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i>2012 Nissan GTR</i></td>
+                        <td>Dark Blue</td>
+                        <td>AWD</td>
+                        <td>550</td>
+                        <td>450</td>
+                        <td>95</td>
+                    </tr>
+                    <tr>
+                        <td><i>The Batmobile</i></td>
+                        <td>Black</td>
+                        <td>RWD</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td><i>2016 Ferrari 458</i></td>
+                        <td>Red</td>
+                        <td>RWD</td>
+                        <td>450</td>
+                        <td>380</td>
+                        <td>85</td>
+                    </tr>
+                    <tr>
+                        <td><i>2003 Chevy Cavalier</i></td>
+                        <td>Beige</td>
+                        <td>FWD</td>
+                        <td>150</td>
+                        <td>120</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><i>2013 Audi A4</i></td>
+                        <td>White</td>
+                        <td>AWD</td>
+                        <td>220</td>
+                        <td>180</td>
+                        <td>50</td>
+                    </tr>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Car Type</td>
+                        <td colspan="4">Car Specs</td>
+                    </tr>
+                </tfoot>
+
+        </table>
+        <br />
+        <br />
+        Upcoming Marvel Movies:
+        <ul>
+            <li>Captain America: Civil War</li>
+            <li>Doctor Strange</li>
+            <li>Thor: Ragnorok</li>
+            <li>Black Panther</li>
+        </ul>
+        <div class="outer-content">
+            <div id="inner-content">Here is some content.</div>
+        </div>
+        <br />
+        <form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="get">
+            <fieldset>
+            <legend>This is a GET form</legend>
+                <label>Your name:
+                    <input type="text" name="text_input" />
+                </label>
+                <br />
+                <label>Type a number between 1 and 100:
+                    <input type="number" name="numerical_input" />
+                </label>
+                <br />
+                <label>Choose a password:
+                    <input type="password" name="password_input" />
+                </label>
+                <br />
+                <p>Select a candy:
+                    <input type="radio" name="candy" value="snickers">Snickers</input>
+                    <input type="radio" name="candy" value="skittles">Skittles</input>
+                    <input type="radio" name="candy" value="mentos">Mentos</input>
+                </p>
+                <input type="submit" value="Submit Info" />
+            </fieldset>
+        </form>
+        <form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="post">
+            <fieldset>
+            <legend>This is a POST form</legend>
+                <label>Your name:
+                    <input type="text" name="text_input" />
+                </label>
+                <br />
+                <label>Type a number between 1 and 100:
+                    <input type="number" name="numerical_input" />
+                </label>
+                <br />
+                <label>Choose a password:
+                    <input type="password" name="password_input" />
+                </label>
+                <br />
+                <p>Select a candy:
+                <input type="radio" name="candy" value="snickers">Snickers</input>
+                <input type="radio" name="candy" value="skittles">Skittles</input>
+                <input type="radio" name="candy" value="mentos">Mentos</input>
+                </p>
+                <input type="submit" value="Submit Info" />
+            </fieldset>
+        </form>
+        
+    </body>
+</html>
