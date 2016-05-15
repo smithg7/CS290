@@ -25,6 +25,24 @@ app.get('/other-page',function(req,res){
 //   res.render('time', genContext());
 // });
 
+// app.get('/get-loopback',function(req,res){
+//   var qParams = "";
+//   for (var p in req.query){
+//     qParams += "The name " + p + " contains the value " + req.query[p] + ", ";
+//   }
+//   qParams = qParams.substring(0,qParams.lastIndexOf(','));
+//   qParams += '.';
+//   var context = {};
+//   context.dataList = qParams;
+//   res.render('get-loopback', context);
+// });
+
+app.get('/show-data', function (req, res) {
+	var context = {};
+	context.sentData = req.query.myData;
+	res.render('show-data', context);
+});
+
 app.get('/get-loopback-improved',function(req,res){
   var qParams = [];
   for (var p in req.query){
