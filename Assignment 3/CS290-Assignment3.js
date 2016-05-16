@@ -3,6 +3,8 @@ Name: Gary Smith
 CS290 HW Assignment: GET and POST
 
 NOTE: The setup code has been copied from the example given in class
+
+LIVE URL:  http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:3000/loopback
 ***********************************************/
 
 var express = require('express');
@@ -16,7 +18,7 @@ app.use(bodyParser.json());
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 3000);
+app.set('port', 3030);
 
 app.get('/',function(req,res){
   res.render('home.handlebars') //We can omit the .handlebars extension as we do below
