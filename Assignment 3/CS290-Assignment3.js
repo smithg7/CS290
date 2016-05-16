@@ -1,9 +1,9 @@
-/*
+/**********************************************
 Name: Gary Smith
 CS290 HW Assignment: GET and POST
 
-NOTE: This code has been copied from the example given in class
-*/
+NOTE: The setup code has been copied from the example given in class
+***********************************************/
 
 var express = require('express');
 
@@ -27,28 +27,38 @@ app.get('/other-page',function(req,res){
 });
 
 
-
+//This route handles a GET request
+//and returns the get-loopback template
 app.get('/loopback',function(req,res){
   var qParams = [];
+  //Get all the parameters in the query string
   for (var p in req.query){
     qParams.push({'name':p,'value':req.query[p]})
   }
+  //We can ignore body parameters since this is a GET request
   var context = {};
   context.dataList = qParams;
   res.render('get-loopback', context);
 });
 
+//This route handles a GET request
+//and returns the get-loopback template
 app.post('/loopback', function(req,res){
   var qParams = [];
+  //get all the body parameters
   for (var p in req.body){
     qParams.push({'name':p,'value':req.body[p]})
   }
-  console.log(qParams);
-  console.log(req.body);
+  //get all the query string parameters
+  for (var p in req.query){
+    qParams.push({'name':p,'value':req.query[p]})
+  }
   var context = {};
   context.dataList = qParams;
   res.render('post-loopback', context);
 });
+
+
 
 app.use(function(req,res){
   res.status(404);
