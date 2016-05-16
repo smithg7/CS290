@@ -4,7 +4,7 @@ CS290 HW Assignment: GET and POST
 
 NOTE: The setup code has been copied from the example given in class
 
-LIVE URL:  http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:3000/loopback
+LIVE URL:  http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:3030/loopback
 ***********************************************/
 
 var express = require('express');
