@@ -1,7 +1,7 @@
 // CS290 Web Development
 // Author: Gary Smith
 // Activity - How To Page
-// References: http://stackoverflow.com/questions/1655769/fastest-md5-implementation-in-javascript
+// References: https://blueimp.github.io/JavaScript-MD5
 
 
 var appid = "77fe67b74820c2fd3353f08676e5542c";
@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', bindButtons);
 
 function bindButtons() {
     //Add event listener for 1st button
-    document.getElementById('weatherSubmit').addEventListener('click', function (event) {
+    document.getElementById('characterSubmit').addEventListener('click', function (event) {
         var req = new XMLHttpRequest();
         var ts = Date.now();
         var url = 'http://gateway.marvel.com:80/v1/public/characters/';
-        var city = document.getElementById('city').value;
-        url += city;
-        url += '?apikey=' + appid;
+        var name = document.getElementById('name').value;
+        url += '?name='+name;
+        url += '&apikey=' + appid;
         url += '&ts=' + ts;
         url += '&hash=' + md5(ts+privatekey+appid);
         req.open('GET', url, true);
@@ -29,8 +29,9 @@ function bindButtons() {
 
                 //Populate the result into the field.
                 var resultString = response.data.results[0].name;
+                resultString += '\n'
                 resultString += response.data.results[0].description;
-                document.getElementById('weatherresults').textContent = resultString;
+                document.getElementById('characterresults').textContent = resultString;
 
             } else {
                 console.log("Error in network request: " + request.statusText);
