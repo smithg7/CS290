@@ -15,8 +15,8 @@ function bindButtons() {
         var ts = Date.now();
         var url = 'http://gateway.marvel.com:80/v1/public/characters/';
         var name = document.getElementById('name').value;
-        url += '?name='+name;
-        url += '&apikey=' + appid;
+        url += name;
+        url += '?apikey=' + appid;
         url += '&ts=' + ts;
         url += '&hash=' + md5(ts+privatekey+appid);
         req.open('GET', url, true);
