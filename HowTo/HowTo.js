@@ -28,8 +28,8 @@ function bindButtons() {
                 console.log(JSON.parse(req.responseText));
 
                 //Populate the result into the field.
-                var resultString = response.data.count;
-                //resultString += response.data.results.description;
+                var resultString = response.data.results[0].name;
+                resultString += response.data.results[0].description;
                 document.getElementById('weatherresults').textContent = resultString;
 
             } else {
