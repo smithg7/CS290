@@ -52,14 +52,14 @@ So lets get started.
 </p>
 <div style="background-color:lightgray;width:50%">
 	<i>	
-	var req = new XMLHttpRequest(); 
-	var ts = Date.now();
-	var url = 'http://gateway.marvel.com:80/v1/public/characters/';
-	var name = document.getElementById('name').value;
-	url += name;
-	url += '?apikey=' + publickey;
-	url += '&amp;ts=' + ts;
-	url += '&amp;hash=' + md5(ts+privatekey+publickey);
+	var req = new XMLHttpRequest(); <BR>
+	var ts = Date.now();<BR>
+	var url = 'http://gateway.marvel.com:80/v1/public/characters/';<BR>
+	var name = document.getElementById('name').value;<BR>
+	url += name;<BR>
+	url += '?apikey=' + publickey;<BR>
+	url += '&amp;ts=' + ts;<BR>
+	url += '&amp;hash=' + md5(ts+privatekey+publickey);<BR>
 	</i>
 </div>
 <p>Let's break this down a bit because there is a lot here.
@@ -68,7 +68,7 @@ So lets get started.
 	<li><div style="background-color:lightgray;width:50%"><i>var ts = Date.now();</i></div> Create an timestamp to be used in a hash in a bit.
 	<li><div style="background-color:lightgray;width:50%"><i>var url = 'http://gateway.marvel.com:80/v1/public/characters/';</i></div> The base of the URL
 	<li><div style="background-color:lightgray;width:50%"><i>var name = document.getElementById('name').value;</i></div> Get the value of the field that the user typed in.
-	<li><div style="background-color:lightgray;width:50%"><i>url += name;</i></div> In this example, we will be getting a character by the ID which is passed as part of the path and not via the query string.
+	<li><div style="background-color:lightgray;width:50%"><i>url += name;</i></div> In this example, we will be getting a character by the ID which is passed as part of the path and not via the query string. (See the reference for "/v1/public/characters/{characterId}" on <a href="http://developer.marvel.com/docs#!/public/getCharacterIndividual_get_1">Marvel's code site</a>)
 	<li><div style="background-color:lightgray;width:50%"><i>url += '?apikey=' + publickey;</i></div> Append the parameter 'apikey' to the URL and add the value of your public key.  This parameter MUST be named 'apikey'.
 	<li><div style="background-color:lightgray;width:50%"><i>url += '&amp;ts=' + ts;</i></div> Append the parameter 'ts' to the URL and the value will be the timestamp from earlier.  This parameter MUST be named 'ts'.
 	<li><div style="background-color:lightgray;width:50%"><i>url += '&amp;hash=' + md5(ts+privatekey+publickey);</i></div> And we saved the best for last.  In order to verify your identity, Marvel requires that you hash together the ts parameter, your private key and your public key and send the result as a parameter named 'hash'.  The hashing algorithm to be used is MD5.   There are many libraries you can choose to hash these values.  I chose to reference https://blueimp.github.io/JavaScript-MD5/js/md5.js but you may choose any md5 you'd like.  Be sure to put a script tag in body of the HTML to point to your chosen md5 function.
@@ -107,7 +107,9 @@ So lets get started.
 <h2>Give credit where credit is due</h2>
 <p>
 	As part of registering your account with Marvel, there is a little line that says you must give credit to Marvel for the data.  So, somewhere visible on your page, you must have the text: <i> Data provided by Marvel. © 2014 Marvel</i></p>
-<h2>Let's put all of it together</h2>
+
+<h2>Let's put it all together</h2>
+<p>Here are the code samples above all combined.</p>
 <h3>HTML file</h3> howto.html<BR>
 <div id="codeExample2" style="background-color:lightgray;width:50%">
 </div>
