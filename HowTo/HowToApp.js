@@ -6,7 +6,11 @@ var app = express();
 app.set('port', 3000);
 
 app.get('/', function(req, res){
-	res.redirect('/HowTo.html');
+	res.sendFile(__dirname + '/howto-marvel.html');
+});
+
+app.get('/HowTo.js', function(req, res){
+	res.sendFile(__dirname + '/HowTo.js');
 });
 
 app.use(function(req, res, next){
