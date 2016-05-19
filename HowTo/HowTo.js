@@ -18,7 +18,7 @@ function bindButtons() {
         url += city;
         url += '?apikey=' + appid;
         url += '&ts=' + ts;
-        url += '&hash=' + md5(ts+appid+privatekey);
+        url += '&hash=' + md5(ts+privatekey+appid);
         req.open('GET', url, true);
 
         //Add Event lister for the response.
