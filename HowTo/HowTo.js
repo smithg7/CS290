@@ -42,9 +42,5 @@ function bindButtons() {
         event.preventDefault();
     });
 
-    
-
-    
-    
 
 };
