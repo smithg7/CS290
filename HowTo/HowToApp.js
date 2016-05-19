@@ -6,7 +6,7 @@ var app = express();
 app.set('port', 3000);
 
 app.get('/', function(req, res){
-	res.sendfile('HowTo.html');
+	res.redirect('/HowTo.html');
 });
 
 app.use(function(req, res, next){
