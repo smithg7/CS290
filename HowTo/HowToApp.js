@@ -1,6 +1,7 @@
 var express = require('express');
 
 var app = express();
+app.set('port', 3000);
 
 app.get('/howTo',function(req,res){
   res.send('HowTo.html');
