@@ -6,23 +6,157 @@
 <body>
 	<h1>Marvel API how to Reference</h1>
 
-<p>This will be a reference on how to use the API provided by Marvel
+<p>
+	This will be a reference on how to use the API provided by Marvel Comics.  They have a great reference for their existing data, but their getting started page is a little lacking.  Here is a little more detailed help to get you started.
 </p>
+<p>
+	First of all, here is a link to Marvel's developer site: <a href="http://developer.marvel.com">http://developer.marvel.com</a><br>
+	Secondly, a link to their 'lacking' getting started site: <a href="http://developer.marvel.com/documentation/getting_started">http://developer.marvel.com/documentation/getting_started</a>
+	<br>
+	Third, a link to their reference page that is pretty good: <a href="http://developer.marvel.com/docs">http://developer.marvel.com/docs</a><br>
+</p>
+<BR>
+So lets get started. 
+<h2>Create an account</h2>
+<p>
+	Register with Marvel to get your public and private keys.  These will be very important later on and you will need to use them in each of your web calls to their API.
+</p>
+<h2>Create your page</h2>
+<p>
+	Next, create an HTML page that you will display to your users.  Here is an example of what that page could look like: 
+</p>
+<div id='codeExample1' style="background-color:lightgray;width:50%"></div>
+<br>
+<br>
+<h2>Create the Javascript</h2>
+<p>
+	Once we have the page ready to populate, it's now time to go get some data to fill it!  This would be a good time to get your public and private keys.  It is a good idea to obscure both of these keys, but for simplicity sake, create a global variable at the top for each key.
+</p>
+<div style="background-color:lightgray;width:50%">
+	<i>	
+	var publickey = "9999999999999999999999999999999999";<BR>
+	var privatekey = "123456789abcdef123456789abcdef123456789abcdef";<BR>
+	</i>
+</div>
 
-link to API reference: <a href="http://developer.marvel.com">http://developer.marvel.com</a><br>
+<p>Next, some page mechanics...  Bind the function to the submit button of the form.</p>
+<div style="background-color:lightgray;width:50%">
+	<i>
+	document.addEventListener('DOMContentLoaded', bindButtons);<br>
+	function bindButtons() {<br>
+	document.getElementById('characterSubmit').addEventListener('click', function (event) {<br>
+	</i>
+</div>
+<p>
+	Now we will build the actual AJAX request.  The Mavel API exclusively uses GET requests.  So all of the parameters that are needed will be passed in the URL.  Here is the code to build the URL:
+</p>
+<div style="background-color:lightgray;width:50%">
+	<i>	
+	var req = new XMLHttpRequest(); 
+	var ts = Date.now();
+	var url = 'http://gateway.marvel.com:80/v1/public/characters/';
+	var name = document.getElementById('name').value;
+	url += name;
+	url += '?apikey=' + publickey;
+	url += '&amp;ts=' + ts;
+	url += '&amp;hash=' + md5(ts+privatekey+publickey);
+	</i>
+</div>
+<p>Let's break this down a bit because there is a lot here.
+<ul>
+	<li><div style="background-color:lightgray;width:50%"><i>var req = new XMLHttpRequest();</i></div> Create an HTTP request object.
+	<li><div style="background-color:lightgray;width:50%"><i>var ts = Date.now();</i></div> Create an timestamp to be used in a hash in a bit.
+	<li><div style="background-color:lightgray;width:50%"><i>var url = 'http://gateway.marvel.com:80/v1/public/characters/';</i></div> The base of the URL
+	<li><div style="background-color:lightgray;width:50%"><i>var name = document.getElementById('name').value;</i></div> Get the value of the field that the user typed in.
+	<li><div style="background-color:lightgray;width:50%"><i>url += name;</i></div> In this example, we will be getting a character by the ID which is passed as part of the path and not via the query string.
+	<li><div style="background-color:lightgray;width:50%"><i>url += '?apikey=' + publickey;</i></div> Append the parameter 'apikey' to the URL and add the value of your public key.  This parameter MUST be named 'apikey'.
+	<li><div style="background-color:lightgray;width:50%"><i>url += '&amp;ts=' + ts;</i></div> Append the parameter 'ts' to the URL and the value will be the timestamp from earlier.  This parameter MUST be named 'ts'.
+	<li><div style="background-color:lightgray;width:50%"><i>url += '&amp;hash=' + md5(ts+privatekey+publickey);</i></div> And we saved the best for last.  In order to verify your identity, Marvel requires that you hash together the ts parameter, your private key and your public key and send the result as a parameter named 'hash'.  The hashing algorithm to be used is MD5.   There are many libraries you can choose to hash these values.  I chose to reference https://blueimp.github.io/JavaScript-MD5/js/md5.js but you may choose any md5 you'd like.  Be sure to put a script tag in body of the HTML to point to your chosen md5 function.
+</ul>
+</p>
+<h2>Handle the Results</h2>
+<p>
+	Once the request has been sent, now it's time to do something with them.  The objects that are returned by Marvel are in the 'application/json' format.  The easiest thing to do is to write the entire result to the console (like the 4th line below console.log(...)) and review the exact results.  Take special care to notice which objects are JSON objects and which are Arrays.  
+</p>
+<div style="background-color:lightgray;width:50%">
+	<i>
+	req.addEventListener('load', function () {<br>
+	if (req.status >= 200 &amp;&amp; req.status < 400) {<br>
+	var response = JSON.parse(req.responseText);<br>
+	console.log(JSON.parse(req.responseText));<br>  //Write the entire object to the browser console
+	var resultString = response.data.results[0].name;<br>
+	resultString += '\n';<br>
+	resultString += response.data.results[0].description;<br>
+	document.getElementById('characterresults').textContent = resultString;<br>
+	} else {<br>
+	console.log("Error in network request: " + request.statusText);<br>
+	}<br>
+	});<br>
+	</i>
+</div>
+<p>
+	Lastly, we wrap it up by sending the request to the server.
+</p> 
+<div style="background-color:lightgray;width:50%">
+	<i>
+    req.send(null);  //Send the GET request!<br>
+    event.preventDefault(); //This method prevents the page from refreshing which is normal submit button behavior.<br>
+	</i>
+</div>
 <br>
-Getting started:
-<ol>
-	<li>get an API key - use the public key in your app
-	<li>link to a hash program to hash the combination of a timestamp, your public key and your private key
-	<li>create your page
-	<li>ALWAYS REFERENCE: Data provided by Marvel. © 2014 Marvel
-</ol>
+<h2>Give credit where credit is due</h2>
+<p>
+	As part of registering your account with Marvel, there is a little line that says you must give credit to Marvel for the data.  So, somewhere visible on your page, you must have the text: <i> Data provided by Marvel. © 2014 Marvel</i></p>
+<h2>Let's put all of it together</h2>
+<h3>HTML file</h3> howto.html<BR>
+<div id="codeExample2" style="background-color:lightgray;width:50%">
+</div>
+<h3>Javascript file</h3> HowTo.js<BR>
+<div style="background-color:lightgray;width:50%">
+	<i>
+	var publickey = "9999999999999999999999999999999999";<BR>
+	var privatekey = "123456789abcdef123456789abcdef123456789abcdef";<BR>
+	document.addEventListener('DOMContentLoaded', bindButtons);<BR>
+<BR>
+	function bindButtons() {<BR>
+	    //Add event listener for 1st button<BR>
+	    document.getElementById('characterSubmit').addEventListener('click', function (event) {<BR>
+	        var req = new XMLHttpRequest();<BR>
+	        var ts = Date.now();<BR>
+	        var url = 'http://gateway.marvel.com:80/v1/public/characters/';<BR>
+	        var name = document.getElementById('name').value;<BR>
+	        url += name;<BR>
+	        url += '?apikey=' + publickey;<BR>
+	        url += '&amp;ts=' + ts;<BR>
+	        url += '&amp;hash=' + md5(ts+privatekey+publickey);<BR>
+	        req.open('GET', url, true);<BR>
+<BR>
+	        //Add Event lister for the response.<BR>
+	        req.addEventListener('load', function () {<BR>
+	            if (req.status >= 200 &amp;&amp; req.status < 400) {<BR>
+	                var response = JSON.parse(req.responseText);<BR>
+	                console.log(JSON.parse(req.responseText));<BR>
+<BR>
+	                //Populate the result into the field.<BR>
+	                var resultString = response.data.results[0].name;<BR>
+	                resultString += '\n';<BR>
+	                resultString += response.data.results[0].description;<BR>
+	                document.getElementById('characterresults').textContent = resultString;<BR>
+<BR>
+	            } else {<BR>
+	                console.log("Error in network request: " + request.statusText);<BR>
+	            }<BR>
+	        });<BR>
+<BR>
+	        //Send the request.  No parameters needed since they are passed in the URL.<BR>
+	        req.send(null);<BR>
+	        event.preventDefault();<BR>
+	    });<BR>
+	</i>
+</div>
 <br>
-Sample code: 
 <br>
-<br>
-Try it out:
+I have set up my own account with Marvel.  Go ahead and try it out! 
 <br>
         <fieldset>
             <legend>Character Data</legend>
