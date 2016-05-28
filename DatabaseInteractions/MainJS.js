@@ -25,8 +25,8 @@ function bindButtons() {
         req.addEventListener('load', function () {
             if (req.status >= 200 && req.status < 400) {
                 console.log(req.responseText);
-                var response = JSON.parse(req.responseText);
-                console.log(JSON.parse(req.responseText));
+                //var response = JSON.parse(req.responseText);
+                //console.log(JSON.parse(req.responseText));
 
                 //Populate the result into the string.
                 var returnedData = JSON.parse(response.data);
