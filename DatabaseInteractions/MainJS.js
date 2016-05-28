@@ -16,7 +16,7 @@ function bindButtons() {
         payload.reps = document.getElementById('reps').value;
         payload.weight = document.getElementById('weight').value;
         payload.date = document.getElementById('date').value;
-        payload.lbs = document.getElementById('lbs').value;
+        payload.lbs = document.getElementById('lbs').checked;
         
         //Request data via a post.
         req.open('POST', url, true);
