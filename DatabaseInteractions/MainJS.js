@@ -23,8 +23,7 @@ function bindButtons() {
 
         //Add Event lister for the response.
         req.addEventListener('load', function () {
-            console.log("hmm...");
-            // if (req.status >= 200 && req.status < 400) {
+             if (req.status >= 200 && req.status < 400) {
             //     console.log(req.responseText);
             //     //var response = JSON.parse(req.responseText);
             //     //console.log(JSON.parse(req.responseText));
@@ -32,10 +31,11 @@ function bindButtons() {
             //     //Populate the result into the string.
             //     var returnedData = JSON.parse(response.data);
             //     console.log("Something worked.");
-
-            // } else {
+                console.log("Something went right");
+             } else {
+                console.log("Something went wrong")
             //     console.log("Error in network request: ");
-            // }
+             }
         });
 
         //Send the request with the data entered in the form.
