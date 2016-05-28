@@ -31,8 +31,8 @@ app.get('/',function(req,res){
   res.render('start', context);
 });
 
-app.get('/HowTo.js', function(req, res){
-  res.sendFile(__dirname + '/HowTo.js');
+app.get('/MainJS.js', function(req, res){
+  res.sendFile(__dirname + '/MainJS.js');
 });
 
 //This route handles a GET request
