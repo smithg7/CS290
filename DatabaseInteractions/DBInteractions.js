@@ -38,7 +38,6 @@ app.get('/MainJS.js', function(req, res){
 //This route handles a GET request
 //and returns the get-loopback template
 app.post('/', function(req,res){
-  alert("huh");
   var qParams = [];
   //get all the body parameters
   for (var p in req.body){
