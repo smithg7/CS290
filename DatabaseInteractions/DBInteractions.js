@@ -31,6 +31,10 @@ app.get('/',function(req,res){
   res.render('start', context);
 });
 
+app.get('/HowTo.js', function(req, res){
+  res.sendFile(__dirname + '/HowTo.js');
+});
+
 //This route handles a GET request
 //and returns the get-loopback template
 app.post('/', function(req,res){
