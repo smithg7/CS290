@@ -9,7 +9,7 @@ function bindButtons() {
     //Add event listener for the first submit button.
     document.getElementById('exerciseSubmit').addEventListener('click', function (event) {
         var req = new XMLHttpRequest();
-        var url = '/';
+        var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
         var payload = { name: null, reps: null, weight: null, date: null, lbs: null};
 
         payload.name = document.getElementById('name').value;
@@ -30,12 +30,10 @@ function bindButtons() {
 
                 //Populate the result into the string.
                 var returnedData = JSON.parse(response.data);
-                var resultString = "Your Name: " + returnedData.last + ', ' + returnedData.first + '\n';
-                resultString += "You are " + returnedData.age + ' years old. \n';
-                document.getElementById('echoresults').textContent = resultString;
+                console.log("Something worked.");
 
             } else {
-                console.log("Error in network request: " + request.statusText);
+                console.log("Error in network request: ");
             }
         });
 
