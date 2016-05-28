@@ -2,7 +2,6 @@
 // Author: Gary Smith
 // Activity - Ajax Interactions
 
-var appid = "fa7d80c48643dfadde2cced1b1be6ca1";
 document.addEventListener('DOMContentLoaded', bindButtons);
 
 function bindButtons() {
@@ -25,6 +24,7 @@ function bindButtons() {
         //Add Event lister for the response.
         req.addEventListener('load', function () {
             if (req.status >= 200 && req.status < 400) {
+                console.log(req.responseText);
                 var response = JSON.parse(req.responseText);
                 console.log(JSON.parse(req.responseText));
 
