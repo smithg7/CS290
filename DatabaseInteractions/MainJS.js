@@ -31,6 +31,7 @@ function bindButtons() {
             //     //Populate the result into the string.
             //     var returnedData = JSON.parse(response.data);
             //     console.log("Something worked.");
+                document.innerHTML = req.responseText;
                 console.log("Something went right");
              } else {
                 console.log("Something went wrong")
