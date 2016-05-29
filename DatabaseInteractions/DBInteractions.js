@@ -102,7 +102,7 @@ app.post('/', function(req,res){
     
   
   res.type("text/plain");
-  context.dataList = SelectAllData();
+  context.dataList = [SelectAllData()];
   res.send(JSON.stringify(context));
 });
 
