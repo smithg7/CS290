@@ -45,7 +45,8 @@ function bindButtons() {
 function EditBtn(Eid)
 { 
     var thisForm = document.getElementById('EditForm'+Eid);
-    console.log("The value of this ID is: " + thisForm.elements["Eid"].value);
+    console.log("The value you typed is: " + thisForm.elements["newOne"].value);
+
     var Editreq = new XMLHttpRequest();
     var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
     var payload = { EditBtn: null, id: null};
@@ -130,7 +131,7 @@ function PopulateTable(data)
         cell5.innerHTML = data[row].lbs
         var buttonHTML = "<form id='EditForm"+data[row].id+"'>";
         buttonHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
-
+        buttonHTML += "<input type='text' id='newOne' value='"+data[row].weight+data[row].id+"' />";
         buttonHTML += "<input type='submit' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
         buttonHTML += "</form>";
         buttonHTML += "<form id='DeleteForm"+data[row].id+"'>";
