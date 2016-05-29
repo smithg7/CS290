@@ -45,14 +45,6 @@ function bindButtons() {
 function EditBtn(Eid)
 { 
     var thisForm = document.getElementById('EditForm'+Eid);
-    console.log("The value you typed is: " + thisForm.elements["Hname"+Eid].value);
-    console.log("The value you typed is: " + thisForm.elements["Hreps"+Eid].value);
-    console.log("The value you typed is: " + thisForm.elements["Hweight"+Eid].value);
-    console.log("The value you typed is: " + thisForm.elements["Hdate"+Eid].value);
-    console.log("The value you typed is: " + thisForm.elements["Hlbs"+Eid].checked);
-
-
-
 
     var Editreq = new XMLHttpRequest();
     var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
@@ -66,6 +58,7 @@ function EditBtn(Eid)
     payload.date = thisForm.elements["Hdate"+Eid].value;
     payload.lbs = thisForm.elements["Hlbs"+Eid].value;
     
+    console.log("Updating: " + JSON.stringify(payload));
     //Request data via a post.
     Editreq.open('POST', url, true);
     Editreq.setRequestHeader('Content-Type', 'application/json');
