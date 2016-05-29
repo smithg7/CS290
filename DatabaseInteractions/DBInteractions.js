@@ -107,9 +107,10 @@ app.post('/', function(req,res){
       next(err);
       return;
     }
+    context.test = JSON.stringify(rows);
   });
   context.dataList = qParams;
-  context.test = JSON.stringify(rows);
+  
   res.send(JSON.stringify(context));
 });
 
