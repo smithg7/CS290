@@ -71,19 +71,19 @@ app.post('/', function(req,res){
 
 
   //Check to see which button sent this get request
-  if(req.body['EditBtn']){
-    var context = {};
-    context.dataList = qParams;
-    res.send(JSON.stringify(context));
-    return;
-  }
+  // if(req.body['EditBtn']){
+  //   var context = {};
+  //   context.dataList = qParams;
+  //   res.send(JSON.stringify(context));
+  //   return;
+  // }
   
-  if(req.body['DeleteBtn']){
-    var context = {};
-    context.dataList = qParams;
-    res.send(JSON.stringify(context));
-    return;
-  }
+  // if(req.body['DeleteBtn']){
+  //   var context = {};
+  //   context.dataList = qParams;
+  //   res.send(JSON.stringify(context));
+  //   return;
+  // }
   //Send the qParams array to the Function to insert them into the database
   
 
@@ -102,16 +102,16 @@ app.post('/', function(req,res){
     
   
   res.type("text/plain");
-  pool.query('SELECT * FROM workouts', function(err, rows, fields){
+  pool.query('SELECT * FROM workouts;', function(err, rows, fields){
     if(err){
       next(err);
       return;
     }
-    context.test = rows[0];
+    context.test = "apple"+rows.length;
+    context.dataList = qParams;
+    res.send(JSON.stringify(context));
   });
-  context.dataList = qParams;
-  
-  res.send(JSON.stringify(context));
+
 });
 
 
