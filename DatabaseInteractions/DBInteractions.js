@@ -35,7 +35,7 @@ app.get('/MainJS.js', function(req, res){
   res.sendFile(__dirname + '/MainJS.js');
 });
 
-//This route handles a GET request
+//This route handles a POST request
 //and returns the get-loopback template
 app.post('/', function(req,res){
   var qParams = [];
@@ -47,6 +47,10 @@ app.post('/', function(req,res){
   for (var p in req.query){
     qParams.push({'name':p,'value':req.query[p]})
   }
+  //Send the qParams
+  
+
+
   var context = {};
   context.dataList = qParams;
   res.render('DB', context);
