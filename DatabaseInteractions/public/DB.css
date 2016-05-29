@@ -1,3 +1,27 @@
+table {
+    border-style:solid;
+    border-width:2px;
+}
+
+tbody tr:nth-of-type(odd) {
+    background: lightblue;
+}
+
+tbody tr:nth-of-type(even) {
+    background: white;
+}
+
+td {
+    border-style:solid;
+    border-width:1px;
+
+}
+
+th {
+    border-style:solid;
+    border-width:1px;
+}
+
 input.hiding {
 	visibility:hidden;
 	width:0px;
@@ -6,4 +30,9 @@ input.hiding {
 input.showing {
 	visibility: visible;
 	width:100px;
+}
+
+showingMyButton {
+	visibility: visible;
+	width:20px;
 }

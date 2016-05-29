@@ -170,7 +170,7 @@ function showFields(rowID)
     document.getElementById("Vweight"+rowID).className = "showing";
     document.getElementById("Vdate"+rowID).className = "showing";
     document.getElementById("Vlbs"+rowID).className = "showing";
-    document.getElementById("EditSubmit"+rowID).className = "showing";
+    document.getElementById("EditSubmit"+rowID).className = "showingMyButton";
     document.getElementById("showHidden"+rowID).className = "hiding";
 }
 
