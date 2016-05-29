@@ -125,19 +125,19 @@ function PopulateTable(data)
     //Add all the new rows back in
     for (var row in data) {
         var newRow = pageTable.insertRow();
-        var rowHTML = "<td style='width:10em;'><input type='text' style='visibility:hidden;width:10em;' id='Vname" + data[row].id + "' value='";
+        var rowHTML = "<td><input type='text' style='visibility:hidden;' id='Vname" + data[row].id + "' value='";
         rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].Ename + "</td>";
 
-        rowHTML += "<td><input type='text' style='visibility:hidden;width:10em;' id='Vreps" + data[row].id + "' value='";
+        rowHTML += "<td><input type='text' style='visibility:hidden;' id='Vreps" + data[row].id + "' value='";
         rowHTML += data[row].reps + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].reps + "</td>";
 
-        rowHTML += "<td><input type='text' style='visibility:hidden;width:10em;' id='Vweight" + data[row].id + "' value='";
+        rowHTML += "<td><input type='text' style='visibility:hidden;' id='Vweight" + data[row].id + "' value='";
         rowHTML += data[row].weight + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].weight + "</td>";
 
-        rowHTML += "<td><input type='text' style='visibility:hidden;width:10em;' id='Vdate" + data[row].id + "' value='";
+        rowHTML += "<td><input type='text' style='visibility:hidden;' id='Vdate" + data[row].id + "' value='";
         rowHTML += data[row].date + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].date + "</td>";
 
