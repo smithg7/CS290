@@ -46,8 +46,9 @@ function bindButtons() {
     var EditButtons = document.getElementsByClassName("EditBtn");
 
     for (var i = 0; i < EditButtons.length; i++) {
-        EditButtons[i].addEventListener('click', function() {
-            console.log("hmm...")
+        EditButtons[i].addEventListener('click', function(event) {
+            console.log("hmm...");
+            event.preventDefault();
         });
     }       
     // for (var btn in EditButtons)
