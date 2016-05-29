@@ -120,23 +120,23 @@ function PopulateTable(data)
     //Add all the new rows back in
     for (var row in data) {
         var newRow = pageTable.insertRow();
-        var rowHTML = "<td><input type='text' id='Vname" + data[row].id + "' value='";
+        var rowHTML = "<td><input type='text' class='hiding' id='Vname" + data[row].id + "' value='";
         rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].Ename + "</td>";
 
-        rowHTML += "<td><input type='text' id='Vreps" + data[row].id + "' value='";
+        rowHTML += "<td><input type='text' class='hiding' id='Vreps" + data[row].id + "' value='";
         rowHTML += data[row].reps + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].reps + "</td>";
 
-        rowHTML += "<td><input type='text' id='Vweight" + data[row].id + "' value='";
+        rowHTML += "<td><input type='text' class='hiding' id='Vweight" + data[row].id + "' value='";
         rowHTML += data[row].weight + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].weight + "</td>";
 
-        rowHTML += "<td><input type='text' id='Vdate" + data[row].id + "' value='";
+        rowHTML += "<td><input type='text' class='hiding' id='Vdate" + data[row].id + "' value='";
         rowHTML += data[row].date + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].date + "</td>";
 
-        rowHTML += "<td><input type='checkbox' id='Vlbs" + data[row].id + "' checked=";
+        rowHTML += "<td><input type='checkbox' class='hiding' id='Vlbs" + data[row].id + "' checked=";
         rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].lbs + "</td>";
 
