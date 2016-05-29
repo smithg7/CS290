@@ -1,6 +1,6 @@
 // CS290 Web Development
 // Author: Gary Smith
-// Activity - Ajax Interactions
+// 
 
 document.addEventListener('DOMContentLoaded', bindButtons);
 
@@ -45,8 +45,9 @@ function bindButtons() {
   
 };
 
-function doStuff()
+function doStuff(e)
 {
-    console.log("weird");
+    console.log(e.TypeOf());
+
     event.preventDefault();
 }
