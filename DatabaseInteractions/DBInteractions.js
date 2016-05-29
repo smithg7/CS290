@@ -107,14 +107,14 @@ app.post('/', function(req,res){
       next(err);
       return;
     }
-    var rowformat = [];
-    for (var i=0; i<rows.length; i++){
-      for (var col in rows[i])
-      {
-        rowformat.push({col:rows[i][col]});  
-      }
-    }
-    context.dataList = rowformat;
+    // var rowformat = [];
+    // for (var i=0; i<rows.length; i++){
+    //   for (var col in rows[i])
+    //   {
+    //     rowformat.push({col:rows[i][col]});  
+    //   }
+    // }
+    context.dataList = rows;
     res.send(JSON.stringify(context));
   });
 
