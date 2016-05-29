@@ -67,7 +67,7 @@ app.post('/', function(req,res){
                       '3':{'id':'3','Ename':'3','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
                       '4':{'id':'4','Ename':'4','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}};
   res.type("text/plain");
-  res.send('DB', JSON.stringify(context));
+  res.send(JSON.stringify(context));
 });
 
 
