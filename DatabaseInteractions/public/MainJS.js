@@ -40,11 +40,11 @@ function bindButtons() {
                     var cell5 = newRow.insertCell(4);
                     var cell6 = newRow.insertCell(5);
 
-                    cell1.text = DBTable[row].Ename
-                    cell2.text = DBTable[row].reps
-                    cell3.text = DBTable[row].weight
-                    cell4.text = DBTable[row].date
-                    cell5.text = DBTable[row].lbs
+                    cell1.innerHTML = DBTable[row].Ename
+                    cell2.innerHTML = DBTable[row].reps
+                    cell3.innerHTML = DBTable[row].weight
+                    cell4.innerHTML = DBTable[row].date
+                    cell5.innerHTML = DBTable[row].lbs
 
                 }
                 
