@@ -55,7 +55,10 @@ app.post('/', function(req,res){
   //An array of arrays?
 
   var context = {};
-  context.dataList = [{'id':'1','name':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, {'id':'1','name':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, {'id':'1','name':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, {'id':'1','name':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}];
+  context.dataList = [{'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
+                      {'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
+                      {'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
+                      {'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}];
   res.render('DB', context);
 });
 
