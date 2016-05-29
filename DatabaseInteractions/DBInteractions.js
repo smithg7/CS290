@@ -51,7 +51,7 @@ app.post('/', function(req,res){
   //Check to see which button sent this get request
   if(req.body['EditBtn']){
     var ctxt = {};
-    ctxt.dataList = [{'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}];
+    ctxt.dataList = [{'id':'1'},{'Ename':'1'},{'reps':'2'}, {'weight':'215'}, {'date':'1'}, {'lbs':true}];
     res.render('edit', ctxt);
   }
   
