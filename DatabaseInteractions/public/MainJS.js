@@ -82,11 +82,6 @@ function deleteBtn(Eid)
     event.preventDefault();
 }
 
-function editSubmit()
-{
-    console.log("edit submitted");
-    event.preventDefault();
-}
 
 function PopulateTable(data)
 {
@@ -106,6 +101,11 @@ function PopulateTable(data)
         cell3.innerHTML = data[row].weight
         cell4.innerHTML = data[row].date
         cell5.innerHTML = data[row].lbs
+        var buttonHTML = "<form id='EditForm"+data[row].id+"'>";
+        buttonHTML += "<input type='hidden' id='Eid' value='"+"taco"+"' />";
 
+        buttonHTML += "<input type='submit' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
+        buttonHTML += "</form>";
+        cell6.innerHTML = buttonHTML;
     }
 }
