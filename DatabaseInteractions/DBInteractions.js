@@ -108,7 +108,7 @@ app.post('/', function(req,res){
       return;
     }
     context.test = "apple"+rows.length;
-    context.dataList = qParams;
+    context.dataList = rows;
     res.send(JSON.stringify(context));
   });
 
