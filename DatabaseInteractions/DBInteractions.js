@@ -5,6 +5,13 @@ CS290 HW Assignment: Database Interactions
 
 var express = require('express');
 var request = require('request');
+var mysql = require('mysql');
+var pool = mysql.createPool({
+  host  : 'localhost',
+  user  : 'student',
+  password: 'default',
+  database: 'student'
+});
 
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
@@ -29,8 +36,22 @@ app.get('/',function(req,res){
   }
   //We can ignore body parameters since this is a GET request
   var context = {};
-  context.dataList = qParams;
-  res.render('start', context);
+  //context.dataList = qParams;
+
+  pool.query("DROP TABLE IF EXISTS workouts", function(err){ //replace your connection pool with the your variable containing the connection pool
+    var createString = "CREATE TABLE workouts("+
+    "id INT PRIMARY KEY AUTO_INCREMENT,"+
+    "name VARCHAR(255) NOT NULL,"+
+    "reps INT,"+
+    "weight INT,"+
+    "date DATE,"+
+    "lbs BOOLEAN)";
+    pool.query(createString, function(err){
+      res.render('start', context);
+    })
+  });
+
+  
 });
 
 
@@ -41,30 +62,26 @@ app.post('/', function(req,res){
   var qParams = [];
   //get all the body parameters
   for (var p in req.body){
-    qParams.push({'name':p,'value':req.query[p]});
+    qParams.push({p:req.query[p]});
   }
   //get all the query string parameters
   for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]});
+    qParams.push({p:req.query[p]});
+    //qParams.push({'name':p,'value':req.query[p]});
   }
+
 
   //Check to see which button sent this get request
   if(req.body['EditBtn']){
-  var context = {};
-  context = {'1':{'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
-                      '2':{'id':'2','Ename':'2','reps':'2', 'weight':'215', 'date':'1', 'lbs':false}, 
-                      '3':{'id':'3','Ename':'Bigger name','reps':'20', 'weight':'180', 'date':'1/2/33', 'lbs':true}, 
-                      '4':{'id':'4','Ename':'4','reps':'2', 'weight':'215', 'date':'1', 'lbs':false}};
-    res.send(JSON.stringify(context));
+    var context = {};
+    res.send(JSON.stringify(qParams));
     return;
   }
   
   if(req.body['DeleteBtn']){
     var context = {};
-    context = {'1':{'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
-               '2':{'id':'2','Ename':'2','reps':'2', 'weight':'215', 'date':'1', 'lbs':false}, 
-               '4':{'id':'4','Ename':'4','reps':'2', 'weight':'215', 'date':'1', 'lbs':false}};
-    res.send(JSON.stringify(context));
+
+    res.send(JSON.stringify(qParams));
     return;
   }
   //Send the qParams array to the Function to insert them into the database
@@ -74,12 +91,9 @@ app.post('/', function(req,res){
   //An array of arrays?
 
   var context = {};
-  context = {'1':{'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
-                      '2':{'id':'2','Ename':'2','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
-                      '3':{'id':'3','Ename':'3','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
-                      '4':{'id':'4','Ename':'4','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}};
+
   res.type("text/plain");
-  res.send(JSON.stringify(context));
+  res.send(JSON.stringify(qParams));
 });
 
 
@@ -101,3 +115,14 @@ app.use(function(err, req, res, next){
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
+
+function SelectAllData(id)
+{
+    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    return (JSON.stringify(rows));
+  });
+}
