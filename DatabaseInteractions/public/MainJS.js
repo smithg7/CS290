@@ -126,23 +126,23 @@ function PopulateTable(data)
         var newRow = pageTable.insertRow();
         var rowHTML = "<td><input type='text' class='hiding' id='Vname" + data[row].id + "' value='";
         rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += data[row].Ename + "</td>";
+        rowHTML += "<div id='nameData" + data[row].id + "'>" + data[row].Ename + "</div></td>";
 
         rowHTML += "<td><input type='text' class='hiding' id='Vreps" + data[row].id + "' value='";
         rowHTML += data[row].reps + "' onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += data[row].reps + "</td>";
+        rowHTML += "<div id='repsData" + data[row].id + "'>" + data[row].reps + "</div></td>";
 
         rowHTML += "<td><input type='text' class='hiding' id='Vweight" + data[row].id + "' value='";
         rowHTML += data[row].weight + "' onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += data[row].weight + "</td>";
+        rowHTML += "<div id='weightData" + data[row].id + "'>" + data[row].weight + "</div></td>";
 
         rowHTML += "<td><input type='text' class='hiding' id='Vdate" + data[row].id + "' value='";
         rowHTML += data[row].date + "' onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += data[row].date + "</td>";
+        rowHTML += "<div id='dateData" + data[row].id + "'>" + data[row].date + "</div></td>";
 
         rowHTML += "<td><input type='checkbox' class='hiding' id='Vlbs" + data[row].id + "' checked=";
         rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += data[row].lbs + "</td>";
+        rowHTML += "<div id='lbsData" + data[row].id + "'>" + data[row].lbs + "</div></td>";
 
         rowHTML += "<td><form id='EditForm" + data[row].id + "'>";
         rowHTML += "<input type='hidden' id='Hname" + data[row].id + "' value='"+data[row].Ename+"' />";
@@ -172,6 +172,11 @@ function showFields(rowID)
     document.getElementById("Vlbs"+rowID).className = "showing";
     document.getElementById("EditSubmit"+rowID).className = "showingMyButton";
     document.getElementById("showHidden"+rowID).className = "hiding";
+    document.getElementById("nameData"+rowID).className = "hiding";
+    document.getElementById("repsData"+rowID).className = "hiding";
+    document.getElementById("weightData"+rowID).className = "hiding";
+    document.getElementById("dateData"+rowID).className = "hiding";
+    document.getElementById("lbsData"+rowID).className = "hiding";
 }
 
 function copyToHidden(rowNum)
