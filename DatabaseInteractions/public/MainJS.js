@@ -124,7 +124,7 @@ function PopulateTable(data)
     //Add all the new rows back in
     for (var row in data) {
         var newRow = pageTable.insertRow();
-        var rowHTML = "<td><input type='text' style='visibility:hidden;size=30;' id='Vname" + data[row].id + "' value='";
+        var rowHTML = "<td><input type='text' style='visibility:hidden;width=30px;' id='Vname" + data[row].id + "' value='";
         rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].Ename + "</td>";
 
