@@ -16,7 +16,7 @@ function bindButtons() {
         payload.weight = document.getElementById('weight').value;
         payload.date = document.getElementById('date').value;
         payload.lbs = document.getElementById('lbs').checked;
-        
+        console.log(JSON.stringify(payload));
         //Request data via a post.
         req.open('POST', url, true);
         req.setRequestHeader('Content-Type', 'application/json');
