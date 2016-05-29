@@ -9,9 +9,9 @@ function bindButtons() {
     document.getElementById('exerciseSubmit').addEventListener('click', function (event) {
         var req = new XMLHttpRequest();
         var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
-        var payload = { name: null, reps: null, weight: null, date: null, lbs: null};
+        var payload = { Ename: null, reps: null, weight: null, date: null, lbs: null};
 
-        payload.name = document.getElementById('name').value;
+        payload.Ename = document.getElementById('name').value;
         payload.reps = document.getElementById('reps').value;
         payload.weight = document.getElementById('weight').value;
         payload.date = document.getElementById('date').value;
