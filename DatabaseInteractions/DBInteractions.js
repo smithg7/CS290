@@ -62,12 +62,12 @@ app.post('/', function(req,res){
   var qParams = [];
   //get all the body parameters
   for (var p in req.body){
-    qParams.push({'name':p,'value':req.query[p]});
+    qParams.push({'name':p,'value':req.body[p]});
   }
   //get all the query string parameters
-  for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]});
-  }
+  // for (var p in req.query){
+  //   qParams.push({'name':p,'value':req.query[p]});
+  // }
 
 
   //Check to see which button sent this get request
