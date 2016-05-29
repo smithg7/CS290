@@ -121,19 +121,24 @@ function PopulateTable(data)
     for (var row in data) {
         var newRow = pageTable.insertRow();
         var rowHTML = "<td><input type='text' id='Vname" + data[row].id + "' value='";
-        rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />" + data[row].Ename;
+        rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
+        rowHTML += data[row].Ename + "</td>";
 
         rowHTML += "<input type='text' id='Vreps" + data[row].id + "' value='";
-        rowHTML += data[row].reps + "' onchange='copyToHidden(" + data[row].id + ")' />" + data[row].reps;
+        rowHTML += data[row].reps + "' onchange='copyToHidden(" + data[row].id + ")' />";
+        rowHTML += data[row].reps + "</td>";
 
         rowHTML += "<input type='text' id='Vweight" + data[row].id + "' value='";
-        rowHTML += data[row].weight + "' onchange='copyToHidden(" + data[row].id + ")' />" + data[row].weight;
+        rowHTML += data[row].weight + "' onchange='copyToHidden(" + data[row].id + ")' />";
+        rowHTML += data[row].weight + "</td>";
 
         rowHTML += "<input type='text' id='Vdate" + data[row].id + "' value='";
-        rowHTML += data[row].date + "' onchange='copyToHidden(" + data[row].id + ")' />" + data[row].date;
+        rowHTML += data[row].date + "' onchange='copyToHidden(" + data[row].id + ")' />";
+        rowHTML += data[row].date + "</td>";
 
         rowHTML += "<input type='checkbox' id='Vlbs" + data[row].id + "' checked=";
-        rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' />" + data[row].lbs;
+        rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' />";
+        rowHTML += data[row].lbs + "</td>";
 
         rowHTML += "<form id='EditForm" + data[row].id + "'>";
         rowHTML += "<input type='hidden' id='Hname" + data[row].id + "' value='"+data[row].name+"' />";
