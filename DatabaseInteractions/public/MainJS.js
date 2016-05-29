@@ -86,9 +86,9 @@ function PopulateTable(data)
     var pageTable = document.getElementById('dataTable');
 
     //delete all existing rows
-    while (pageTable.rows.count > 0)
-    {
-        pageTable.deleteRow(0);
+    for(var i = 0; i < pageTable.rows.length;)
+    {   
+       pageTable.deleteRow(i);
     }
 
     //Add all the new rows back in
