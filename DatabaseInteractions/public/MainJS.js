@@ -45,9 +45,9 @@ function bindButtons() {
   
 };
 
-function EditBtn()
+function EditBtn(Eid)
 {
-    console.log("no");
+    console.log("ID to edit: " + Eid);
     event.preventDefault();
 }
 
