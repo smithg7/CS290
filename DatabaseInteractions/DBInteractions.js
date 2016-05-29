@@ -65,9 +65,9 @@ app.post('/', function(req,res){
     qParams.push({'name':p,'value':req.body[p]});
   }
   //get all the query string parameters
-  // for (var p in req.query){
-  //   qParams.push({'name':p,'value':req.query[p]});
-  // }
+  for (var p in req.query){
+    qParams.push({'name':p,'value':req.query[p]});
+  }
 
 
   //Check to see which button sent this get request
@@ -93,7 +93,7 @@ app.post('/', function(req,res){
   var context = {};
   var myName = req.body["Ename"];
   var insertValues = [req.body["Ename"], req.body["reps"], req.body["weight"], req.body["date"], req.body["lbs"]];
-  mysql.pool.query("INSERT INTO workouts (name, reps, weight, date, lbs) VALUES ('a', 2, 2,'1/2/2016', true)",insertValues ,function(err, result){
+  pool.query("INSERT INTO workouts (name, reps, weight, date, lbs) VALUES ('a', 2, 2,'1/2/2016', true)",insertValues ,function(err, result){
     if(err){
       next(err);
       return;
@@ -127,7 +127,7 @@ app.listen(app.get('port'), function(){
 
 function SelectAllData()
 {
-    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+    pool.query('SELECT * FROM workouts', function(err, rows, fields){
     if(err){
       next(err);
       return;
