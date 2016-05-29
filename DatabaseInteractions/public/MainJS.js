@@ -28,25 +28,7 @@ function bindButtons() {
                 console.log(req.responseText);
                 //The response text will contain a JSON object with table data
                 //clear out the table and replace it with the database info
-                var DBTable = JSON.parse(req.responseText);
-                var pageTable = document.getElementById('dataTable');
-
-                for (var row in DBTable) {
-                    var newRow = pageTable.insertRow();
-                    var cell1 = newRow.insertCell(0);
-                    var cell2 = newRow.insertCell(1);
-                    var cell3 = newRow.insertCell(2);
-                    var cell4 = newRow.insertCell(3);
-                    var cell5 = newRow.insertCell(4);
-                    var cell6 = newRow.insertCell(5);
-
-                    cell1.innerHTML = DBTable[row].Ename
-                    cell2.innerHTML = DBTable[row].reps
-                    cell3.innerHTML = DBTable[row].weight
-                    cell4.innerHTML = DBTable[row].date
-                    cell5.innerHTML = DBTable[row].lbs
-
-                }
+                PopulateTable(JSON.parse(req.responseText));
                 
              } else {
                  console.log("Error in network request: ");
@@ -104,4 +86,26 @@ function editSubmit()
 {
     console.log("edit submitted");
     event.preventDefault();
+}
+
+function PopulateTable(data)
+{
+    var pageTable = document.getElementById('dataTable');
+
+    for (var row in data) {
+        var newRow = pageTable.insertRow();
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+        var cell5 = newRow.insertCell(4);
+        var cell6 = newRow.insertCell(5);
+
+        cell1.innerHTML = data[row].Ename
+        cell2.innerHTML = data[row].reps
+        cell3.innerHTML = data[row].weight
+        cell4.innerHTML = data[row].date
+        cell5.innerHTML = data[row].lbs
+
+    }
 }
