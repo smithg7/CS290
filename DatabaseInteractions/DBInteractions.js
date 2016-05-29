@@ -62,7 +62,7 @@ app.post('/', function(req,res){
   var qParams = [];
   //get all the body parameters
   for (var p in req.body){
-    qParams.push({'name':p,'value':req.query[p]});
+    qParams.push({'name':p,'value':'1'});
   }
   //get all the query string parameters
   for (var p in req.query){
@@ -91,7 +91,7 @@ app.post('/', function(req,res){
   //An array of arrays?
 
   var context = {};
-  context.dataList = JSON.parse(req.query); 
+  context.dataList = qParams; 
   res.type("text/plain");
   res.send(JSON.stringify(context));
 });
