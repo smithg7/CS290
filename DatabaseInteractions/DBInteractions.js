@@ -102,7 +102,8 @@ app.post('/', function(req,res){
     
   
   res.type("text/plain");
-  context.dataList = [SelectAllData()];
+  context.dataList = SelectAllData();
+  context.test = 'test';
   res.send(JSON.stringify(context));
 });
 
