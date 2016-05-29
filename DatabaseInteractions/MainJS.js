@@ -43,7 +43,7 @@ function bindButtons() {
         event.preventDefault();
     });
 
-    var EditButtons = document.getElementsByClass('EditBtn');
+    var EditButtons = document.getElementsByClassName('EditBtn');
     for (var btn in EditButtons)
     {
         btn.addEventListener('click', function (event) {
