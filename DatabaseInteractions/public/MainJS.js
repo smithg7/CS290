@@ -47,6 +47,9 @@ function EditBtn(Eid)
     var thisForm = document.getElementById('EditForm'+Eid);
     console.log("The value you typed is: " + thisForm.elements["newOne"].value);
 
+
+
+
     var Editreq = new XMLHttpRequest();
     var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
     var payload = { EditBtn: null, id: null};
@@ -117,17 +120,22 @@ function PopulateTable(data)
     //Add all the new rows back in
     for (var row in data) {
         var newRow = pageTable.insertRow();
-        var rowHTML = "<form id='EditForm"+data[row].id+"'>";
-        rowHTML += "<td>" + data[row].Ename + "</td>";
-        rowHTML += "<td>" + data[row].reps + "</td>";
-        rowHTML += "<td>" + data[row].weight + "</td>";
-        rowHTML += "<td>" + data[row].date + "</td>";
-        rowHTML += "<td>" + data[row].lbs + "</td>";
+        var rowHTML = "<td><input type='text' id='Vname' value='" + data[row].Ename + "' />" + data[row].Ename + "</td>";
+        rowHTML += "<td><input type='text' id='Vreps' value='" + data[row].reps + "' />" + data[row].reps + "</td>";
+        rowHTML += "<td><input type='text' id='Vweight' value='" + data[row].weight + "' />" + data[row].weight + "</td>";
+        rowHTML += "<td><input type='text' id='Vdate' value='" + data[row].date + "' />" + data[row].date + "</td>";
+        rowHTML += "<td><input type='checkbox' id='Vlbs' checked=" + data[row].lbs + " />" + data[row].lbs + "</td>";
 
-        rowHTML += "<td><input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
+        rowHTML += "<td><form id='EditForm" + data[row].id + "'>";
+        rowHTML += "<input type='hidden' id='Hname" + data[row].id + "' value='"+data[row].name+"' />";
+        rowHTML += "<input type='hidden' id='Hreps" + data[row].id + "' value='"+data[row].reps+"' />";
+        rowHTML += "<input type='hidden' id='Hweight" + data[row].id + "' value='"+data[row].weight+"' />";
+        rowHTML += "<input type='hidden' id='Hdate" + data[row].id + "' value='"+data[row].date+"' />";
+        rowHTML += "<input type='hidden' id='Hlbs" + data[row].id + "' value='"+data[row].lbs+"' />";
+
         rowHTML += "<input type='text' id='newOne' value='"+data[row].weight+data[row].id+"' />";
         rowHTML += "<input type='submit' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
-        rowHTML += "</td></form>";
+        rowHTML += "</form></td>";
         rowHTML += "<td><form id='DeleteForm"+data[row].id+"'>";
         rowHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
 
