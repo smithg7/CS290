@@ -125,8 +125,8 @@ function PopulateTable(data)
     for (var row in data) {
         var newRow = pageTable.insertRow();
         var rowHTML = "<td><input type='text' class='hiding' id='Vname" + data[row].id + "' value='";
-        rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += "<div class='showing' id='nameData" + data[row].id + "'>" + data[row].Ename + "</div></td>";
+        rowHTML += data[row].name + "' onchange='copyToHidden(" + data[row].id + ")' />";
+        rowHTML += "<div class='showing' id='nameData" + data[row].id + "'>" + data[row].name + "</div></td>";
 
         rowHTML += "<td><input type='text' class='hiding' id='Vreps" + data[row].id + "' value='";
         rowHTML += data[row].reps + "' onchange='copyToHidden(" + data[row].id + ")' />";
