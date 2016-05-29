@@ -91,7 +91,7 @@ app.post('/', function(req,res){
   //An array of arrays?
 
   var context = {};
-  context.dataList = qParams; 
+  context.dataList = JSON.parse(req.query); 
   res.type("text/plain");
   res.send(JSON.stringify(context));
 });
