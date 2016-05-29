@@ -117,28 +117,23 @@ function PopulateTable(data)
     //Add all the new rows back in
     for (var row in data) {
         var newRow = pageTable.insertRow();
-        var cell1 = newRow.insertCell(0);
-        var cell2 = newRow.insertCell(1);
-        var cell3 = newRow.insertCell(2);
-        var cell4 = newRow.insertCell(3);
-        var cell5 = newRow.insertCell(4);
-        var cell6 = newRow.insertCell(5);
+        var rowHTML = "<form id='EditForm"+data[row].id+"'>";
+        rowHTML += "<td>" + data[row].Ename + "</td>";
+        rowHTML += "<td>" + data[row].reps + "</td>";
+        rowHTML += "<td>" + data[row].weight + "</td>";
+        rowHTML += "<td>" + data[row].date + "</td>";
+        rowHTML += "<td>" + data[row].lbs + "</td>";
 
-        cell1.innerHTML = data[row].Ename
-        cell2.innerHTML = data[row].reps
-        cell3.innerHTML = data[row].weight
-        cell4.innerHTML = data[row].date
-        cell5.innerHTML = data[row].lbs
-        var buttonHTML = "<form id='EditForm"+data[row].id+"'>";
-        buttonHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
-        buttonHTML += "<input type='text' id='newOne' value='"+data[row].weight+data[row].id+"' />";
-        buttonHTML += "<input type='submit' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
-        buttonHTML += "</form>";
-        buttonHTML += "<form id='DeleteForm"+data[row].id+"'>";
-        buttonHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
+        rowHTML += "<td><input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
+        rowHTML += "<input type='text' id='newOne' value='"+data[row].weight+data[row].id+"' />";
+        rowHTML += "<input type='submit' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
+        rowHTML += "</form>";
+        rowHTML += "<form id='DeleteForm"+data[row].id+"'>";
+        rowHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
 
-        buttonHTML += "<input type='submit' onclick='deleteBtn(" + data[row].id + ")' value='Delete' />";
-        buttonHTML += "</form>";
-        cell6.innerHTML = buttonHTML;
+        rowHTML += "<input type='submit' onclick='deleteBtn(" + data[row].id + ")' value='Delete' />";
+        rowHTML += "</form></td>";
+        newRow.innerHTML = rowHTML;
+        
     }
 }
