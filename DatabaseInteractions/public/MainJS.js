@@ -52,12 +52,12 @@ function EditBtn(Eid)
     
     //Request data via a post.
     req.open('POST', url, true);
-    //req.setRequestHeader('Content-Type', 'application/json');
+    req.setRequestHeader('Content-Type', 'application/json');
 
     //Add Event lister for the response.
     req.addEventListener('load', function () {
          if (req.status >= 200 && req.status < 400) {
-            //console.log(req.responseText);
+            console.log(req.responseText);
             document.write(req.responseText);
             document.close();
             
