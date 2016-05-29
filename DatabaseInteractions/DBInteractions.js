@@ -102,8 +102,14 @@ app.post('/', function(req,res){
     
   
   res.type("text/plain");
-  context.dataList = SelectAllData();
-  context.test = 'test';
+  pool.query('SELECT * FROM workouts', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+  });
+  context.dataList = qParams;
+  context.test = JSON.stringify(rows);
   res.send(JSON.stringify(context));
 });
 
