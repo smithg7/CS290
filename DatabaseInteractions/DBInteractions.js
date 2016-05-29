@@ -71,19 +71,19 @@ app.post('/', function(req,res){
 
 
   //Check to see which button sent this get request
-  if(req.body['EditBtn']){
-    var context = {};
-    context.dataList = qParams;
-    res.send(JSON.stringify(context));
-    return;
-  }
+  // if(req.body['EditBtn']){
+  //   var context = {};
+  //   context.dataList = qParams;
+  //   res.send(JSON.stringify(context));
+  //   return;
+  // }
   
-  if(req.body['DeleteBtn']){
-    var context = {};
-    context.dataList = qParams;
-    res.send(JSON.stringify(context));
-    return;
-  }
+  // if(req.body['DeleteBtn']){
+  //   var context = {};
+  //   context.dataList = qParams;
+  //   res.send(JSON.stringify(context));
+  //   return;
+  // }
   //Send the qParams array to the Function to insert them into the database
   
 
@@ -108,10 +108,10 @@ app.post('/', function(req,res){
       return;
     }
     var rowformat = [];
-    for (var row in rows){
-      for (var col in row)
+    for (var i=0; i<rows.length; i++){
+      for (var col in rows[i])
       {
-        rowformat.push({'name':col,'value':row[col]});  
+        rowformat.push({'name':col,'value':rows[i][col]});  
       }
     }
     context.dataList = rowformat;

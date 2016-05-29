@@ -16,7 +16,7 @@ function bindButtons() {
         payload.weight = document.getElementById('weight').value;
         payload.date = document.getElementById('date').value;
         payload.lbs = document.getElementById('lbs').checked;
-        console.log(JSON.stringify(payload));
+        console.log("Inserting: " + JSON.stringify(payload));
         //Request data via a post.
         req.open('POST', url, true);
         req.setRequestHeader('Content-Type', 'application/json');
@@ -25,7 +25,7 @@ function bindButtons() {
         req.addEventListener('load', function () {
              if (req.status >= 200 && req.status < 400) {
 
-                console.log(req.responseText);
+                console.log("Result of Submit: " + req.responseText);
                 //The response text will contain a JSON object with table data
                 //clear out the table and replace it with the database info
                 PopulateTable(JSON.parse(req.responseText));
