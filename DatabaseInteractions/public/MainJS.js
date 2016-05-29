@@ -25,8 +25,9 @@ function bindButtons() {
         req.addEventListener('load', function () {
              if (req.status >= 200 && req.status < 400) {
 
-                document.write(req.responseText);
-                document.close();
+                console.log(req.responseText);
+                //The response text will contain a JSON object with table data
+                //clear out the table and replace it with the database info
                 
              } else {
                  console.log("Error in network request: ");
@@ -42,7 +43,8 @@ function bindButtons() {
 
 function EditBtn(Eid)
 { 
-    console.log(this.id);       
+    var thisForm = document.getElementById("EditForm"+Eid);
+    console.log(thisForm.elements["Eid"].value);
     // var Editreq = new XMLHttpRequest();
     // var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
     // var payload = { EditBtn: null, id: null};

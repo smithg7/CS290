@@ -12,8 +12,8 @@
 	<tbody>
 	  {{#each dataList}}
 	    <tr>
-	    	<form>
-	    	<input type="hidden" id="id" value="{{this.id}}" />
+	    	<form id="EditForm{{this.id}}">
+	    	<input type="hidden" id="Eid" value="{{this.id}}" />
 	    	<td>{{this.Ename}}</td>
 	    	<td>{{this.reps}}</td>
 	    	<td>{{this.weight}}</td>
