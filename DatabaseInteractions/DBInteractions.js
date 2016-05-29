@@ -40,12 +40,12 @@ app.get('/',function(req,res){
 
   pool.query("DROP TABLE IF EXISTS workouts", function(err){ //replace your connection pool with the your variable containing the connection pool
     var createString = "CREATE TABLE workouts("+
-    "id INT PRIMARY KEY AUTO_INCREMENT,"+
-    "name VARCHAR(255) NOT NULL,"+
-    "reps INT,"+
-    "weight INT,"+
-    "date DATE,"+
-    "lbs BOOLEAN)";
+      "id INT PRIMARY KEY AUTO_INCREMENT,"+
+      "name VARCHAR(255) NOT NULL,"+
+      "reps INT,"+
+      "weight INT,"+
+      "date DATE,"+
+      "lbs BOOLEAN)";
     pool.query(createString, function(err){
       res.render('start', context);
     })
@@ -62,7 +62,7 @@ app.post('/', function(req,res){
   var qParams = [];
   //get all the body parameters
   for (var p in req.body){
-    qParams.push({'name':p,'value':req.body[p]});
+    qParams.push({'name':p,'value':req.query[p]});
   }
   //get all the query string parameters
   for (var p in req.query){
