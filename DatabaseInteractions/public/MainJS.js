@@ -124,7 +124,7 @@ function PopulateTable(data)
     //Add all the new rows back in
     for (var row in data) {
         var newRow = pageTable.insertRow();
-        var rowHTML = "<td><input type='text' style='visibility:hidden;width:100px;' id='Vname" + data[row].id + "' value='";
+        var rowHTML = "<td><input type='text' class='hiding' id='Vname" + data[row].id + "' value='";
         rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].Ename + "</td>";
 
@@ -132,15 +132,15 @@ function PopulateTable(data)
         rowHTML += data[row].reps + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].reps + "</td>";
 
-        rowHTML += "<td><input type='text' style='visibility:hidden;' id='Vweight" + data[row].id + "' value='";
+        rowHTML += "<td><input type='text' class='hiding' id='Vweight" + data[row].id + "' value='";
         rowHTML += data[row].weight + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].weight + "</td>";
 
-        rowHTML += "<td><input type='text' style='visibility:hidden;' id='Vdate" + data[row].id + "' value='";
+        rowHTML += "<td><input type='text' class='hiding' id='Vdate" + data[row].id + "' value='";
         rowHTML += data[row].date + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].date + "</td>";
 
-        rowHTML += "<td><input type='checkbox' style='visibility:hidden;' id='Vlbs" + data[row].id + "' checked=";
+        rowHTML += "<td><input type='checkbox' class='hiding' id='Vlbs" + data[row].id + "' checked=";
         rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].lbs + "</td>";
 
@@ -151,7 +151,7 @@ function PopulateTable(data)
         rowHTML += "<input type='hidden' id='Hdate" + data[row].id + "' value='"+data[row].date+"' />";
         rowHTML += "<input type='hidden' id='Hlbs" + data[row].id + "' value='"+data[row].lbs+"' />";
         rowHTML += "<input type='button' id='showHidden" + data[row].id + "' value='Edit' onclick='showFields(" + data[row].id + ")' />";
-        rowHTML += "<input type='submit' id='EditSubmit" + data[row].id + "' style='visibility:hidden;' onclick='EditBtn(" + data[row].id + ")' value='Save' />";
+        rowHTML += "<input type='submit' id='EditSubmit" + data[row].id + "' class='hiding' onclick='EditBtn(" + data[row].id + ")' value='Save' />";
         rowHTML += "</form></td>";
 
         rowHTML += "<td><form id='DeleteForm"+data[row].id+"'>";
@@ -165,13 +165,13 @@ function PopulateTable(data)
 
 function showFields(rowID)
 {
-    document.getElementById("Vname"+rowID).style.visibility = 'visible';
-    document.getElementById("Vreps"+rowID).style.visibility = 'visible';
-    document.getElementById("Vweight"+rowID).style.visibility = 'visible';
-    document.getElementById("Vdate"+rowID).style.visibility = 'visible';
-    document.getElementById("Vlbs"+rowID).style.visibility = 'visible';
-    document.getElementById("EditSubmit"+rowID).style.visibility = 'visible';
-    document.getElementById("showHidden"+rowID).style.visibility = 'hidden';
+    document.getElementById("Vname"+rowID).className = "showing";
+    document.getElementById("Vreps"+rowID).className = "showing";
+    document.getElementById("Vweight"+rowID).className = "showing";
+    document.getElementById("Vdate"+rowID).className = "showing";
+    document.getElementById("Vlbs"+rowID).className = "showing";
+    document.getElementById("EditSubmit"+rowID).className = "showing";
+    document.getElementById("showHidden"+rowID).className = "hiding";
 }
 
 function copyToHidden(rowNum)
