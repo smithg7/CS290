@@ -53,6 +53,7 @@ app.post('/', function(req,res){
     var ctxt = {};
     ctxt.dataList = {'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true};
     res.send("You send me an ID of: " + req.body['id']);
+    return;
   }
   
   //Send the qParams array to the Function to insert them into the database
