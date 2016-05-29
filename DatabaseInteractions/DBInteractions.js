@@ -66,7 +66,7 @@ app.post('/', function(req,res){
   }
   //get all the query string parameters
   for (var p in req.query){
-    qParams.push({'name':p,'value':req.body[p]});
+    qParams.push({'name':p,'value':req.query[p]});
   }
 
 
