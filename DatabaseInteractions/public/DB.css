@@ -33,6 +33,7 @@ input.showing {
 }
 
 div.hiding {
+	float:right;
 	visibility:hidden;
 }
 
