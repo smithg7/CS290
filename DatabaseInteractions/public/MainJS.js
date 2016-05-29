@@ -122,7 +122,7 @@ function PopulateTable(data)
     }
 
     //Add all the new rows back in
-    for (var row in data) {
+    for (var row in data.dataList) {
         var newRow = pageTable.insertRow();
         var rowHTML = "<td><input type='text' class='hiding' id='Vname" + data[row].id + "' value='";
         rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
