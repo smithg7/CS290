@@ -92,10 +92,17 @@ app.post('/', function(req,res){
 
   var context = {};
   var myName = req.body["Ename"];
-  context.dataList = qParams; 
-  context.whee = myName;
+  var insertValues = [req.body["Ename"], req.body["reps"], req.body["weight"], req.body["date"], req.body["lbs"]];
+  mysql.pool.query("INSERT INTO workouts (name, reps, weight, date, lbs) VALUES (?,?,?,?,?)",insertValues ,function(err, result){
+    if(err){
+      next(err);
+      return;
+    }
+  });
+    
+  
   res.type("text/plain");
-  res.send(JSON.stringify(context));
+  res.send(SelectAllData());
 });
 
 
@@ -118,7 +125,7 @@ app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
 
-function SelectAllData(id)
+function SelectAllData()
 {
     mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
     if(err){
