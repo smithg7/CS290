@@ -41,33 +41,34 @@ function bindButtons() {
 };
 
 function EditBtn(Eid)
-{        
-    var Editreq = new XMLHttpRequest();
-    var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
-    var payload = { EditBtn: null, id: null};
+{ 
+    console.log(this.id);       
+    // var Editreq = new XMLHttpRequest();
+    // var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
+    // var payload = { EditBtn: null, id: null};
 
-    payload.EditBtn = "1";
-    payload.id = Eid;
+    // payload.EditBtn = "1";
+    // payload.id = Eid;
 
     
-    //Request data via a post.
-    Editreq.open('POST', url, true);
-    Editreq.setRequestHeader('Content-Type', 'application/json');
+    // //Request data via a post.
+    // Editreq.open('POST', url, true);
+    // Editreq.setRequestHeader('Content-Type', 'application/json');
 
-    //Add Event lister for the response.
-    Editreq.addEventListener('load', function () {
-         if (Editreq.status >= 200 && Editreq.status < 400) {
-            console.log(Editreq.responseText);
-            //document.write(Editreq.responseText);
-            //document.close();
+    // //Add Event lister for the response.
+    // Editreq.addEventListener('load', function () {
+    //      if (Editreq.status >= 200 && Editreq.status < 400) {
+    //         console.log(Editreq.responseText);
+    //         //document.write(Editreq.responseText);
+    //         //document.close();
             
-         } else {
-             console.log("Error in network request: ");
-         }
-    });
+    //      } else {
+    //          console.log("Error in network request: ");
+    //      }
+    // });
 
     //Send the request with the data entered in the form.
-    Editreq.send(JSON.stringify(payload));
+    //Editreq.send(JSON.stringify(payload));
     event.preventDefault();
 }
 
