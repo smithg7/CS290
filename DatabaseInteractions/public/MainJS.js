@@ -46,11 +46,11 @@ function EditBtn(Eid)
 { 
     var thisForm = document.getElementById('EditForm'+Eid);
     console.log("The value you typed is: " + thisForm.elements["newOne"].value);
-    console.log("The value you typed is: " + thisForm.elements["Hname"].value);
-    console.log("The value you typed is: " + thisForm.elements["Hreps"].value);
-    console.log("The value you typed is: " + thisForm.elements["Hweight"].value);
-    console.log("The value you typed is: " + thisForm.elements["Hdate"].value);
-    console.log("The value you typed is: " + thisForm.elements["Hlbs"].checked);
+    // console.log("The value you typed is: " + thisForm.elements["Hname"].value);
+    // console.log("The value you typed is: " + thisForm.elements["Hreps"].value);
+    // console.log("The value you typed is: " + thisForm.elements["Hweight"].value);
+    // console.log("The value you typed is: " + thisForm.elements["Hdate"].value);
+    // console.log("The value you typed is: " + thisForm.elements["Hlbs"].checked);
 
 
 
@@ -125,7 +125,7 @@ function PopulateTable(data)
     //Add all the new rows back in
     for (var row in data) {
         var newRow = pageTable.insertRow();
-        var rowHTML = "<td><input type='text' style='visibility:hidden;width:10em;' id='Vname" + data[row].id + "' value='";
+        var rowHTML = "<td style='width:10em;'><input type='text' style='visibility:hidden;width:10em;' id='Vname" + data[row].id + "' value='";
         rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].Ename + "</td>";
 
@@ -151,13 +151,12 @@ function PopulateTable(data)
         rowHTML += "<input type='hidden' id='Hweight" + data[row].id + "' value='"+data[row].weight+"' />";
         rowHTML += "<input type='hidden' id='Hdate" + data[row].id + "' value='"+data[row].date+"' />";
         rowHTML += "<input type='hidden' id='Hlbs" + data[row].id + "' value='"+data[row].lbs+"' />";
-
         rowHTML += "<input type='text' id='newOne' value='"+data[row].weight+data[row].id+"' />";
         rowHTML += "<input type='submit' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
         rowHTML += "</form></td>";
+
         rowHTML += "<td><form id='DeleteForm"+data[row].id+"'>";
         rowHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
-
         rowHTML += "<input type='submit' onclick='deleteBtn(" + data[row].id + ")' value='Delete' />";
         rowHTML += "</form></td>";
         newRow.innerHTML = rowHTML;
