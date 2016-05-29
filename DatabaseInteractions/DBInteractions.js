@@ -41,15 +41,18 @@ app.post('/', function(req,res){
   var qParams = [];
   //get all the body parameters
   for (var p in req.body){
-    qParams.push({'name':p,'value':req.body[p]})
+    qParams.push({p:req.body[p]});
   }
   //get all the query string parameters
   for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]})
+    qParams.push({'name':p,'value':req.query[p]});
   }
-  //Send the qParams
+  
+  //Send the qParams array to the Function to insert them into the database
   
 
+  //return an array of items from the databse to populate the tables with
+  //An array of arrays?
 
   var context = {};
   context.dataList = qParams;
