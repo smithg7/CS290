@@ -4,6 +4,7 @@ CS290 HW Assignment: Database Interactions
 ***********************************************/
 
 var express = require('express');
+var request = require('request');
 
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
@@ -16,6 +17,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 4000);
 
+app.use(express.static('public'));
 
 //This route handles a GET request
 //and returns the get-loopback template
@@ -31,9 +33,6 @@ app.get('/',function(req,res){
   res.render('start', context);
 });
 
-app.get('/MainJS.js', function(req, res){
-  res.sendFile(__dirname + '/MainJS.js');
-});
 
 //This route handles a POST request
 //and returns the get-loopback template
