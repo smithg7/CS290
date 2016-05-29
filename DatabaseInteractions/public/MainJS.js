@@ -78,7 +78,7 @@ function deleteBtn(Eid)
     event.preventDefault();
 }
 
-function EditSubmit()
+function editSubmit()
 {
     console.log("edit submitted");
     event.preventDefault();
