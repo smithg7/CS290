@@ -151,8 +151,8 @@ function PopulateTable(data)
         rowHTML += "<input type='hidden' id='Hweight" + data[row].id + "' value='"+data[row].weight+"' />";
         rowHTML += "<input type='hidden' id='Hdate" + data[row].id + "' value='"+data[row].date+"' />";
         rowHTML += "<input type='hidden' id='Hlbs" + data[row].id + "' value='"+data[row].lbs+"' />";
-        rowHTML += "<input type='button' id='showHidden' value='Edit' onclick='showFields(" + data[row].id + ")' />";
-        rowHTML += "<input type='submit' style='visibility:hidden;' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
+        rowHTML += "<input type='button' id='showHidden" + data[row].id + "' value='Edit' onclick='showFields(" + data[row].id + ")' />";
+        rowHTML += "<input type='submit' id='EditSubmit" + data[row].id + "' style='visibility:hidden;' onclick='EditBtn(" + data[row].id + ")' value='Save' />";
         rowHTML += "</form></td>";
 
         rowHTML += "<td><form id='DeleteForm"+data[row].id+"'>";
@@ -162,6 +162,17 @@ function PopulateTable(data)
         newRow.innerHTML = rowHTML;
         
     }
+}
+
+function showFields(rowID)
+{
+    document.getElementById("Vname"+rowID).style.visibility = 'visible';
+    document.getElementById("Vreps"+rowID).style.visibility = 'visible';
+    document.getElementById("Vweight"+rowID).style.visibility = 'visible';
+    document.getElementById("Vdate"+rowID).style.visibility = 'visible';
+    document.getElementById("Vlbs"+rowID).style.visibility = 'visible';
+    document.getElementById("EditSubmit"+rowID).style.visibility = 'visible';
+    document.getElementById("showHidden"+rowID).style.visibility = 'hidden';
 }
 
 function copyToHidden(rowNum)
