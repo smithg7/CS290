@@ -42,23 +42,11 @@ function bindButtons() {
         req.send(JSON.stringify(payload));
         event.preventDefault();
     });
-
-    var EditButtons = document.getElementsByClassName("EditBtn");
-    console.log(EditButtons.length);
-    for (var i = 0; i < EditButtons.length; i++) {
-        EditButtons[i].addEventListener('click', function(event) {
-            console.log("hmm...");
-            event.preventDefault();
-        });
-    }
-    // for (var btn in EditButtons)
-    // {
-
-    //     //btn.addEventListener('click', function (event) {
-    //         console.log("dumb");
-    //         event.preventDefault();
-    //     //});
-    // }
-
-    
+  
 };
+
+function doStuff()
+{
+    console.log("weird");
+    event.preventDefault();
+}
