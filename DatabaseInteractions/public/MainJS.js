@@ -28,6 +28,10 @@ function bindButtons() {
                 console.log(req.responseText);
                 //The response text will contain a JSON object with table data
                 //clear out the table and replace it with the database info
+                var DBTable = JSON.parse(req.responseText);
+                for (var row in DBTable) {
+                  console.log(row.Ename);
+                }
                 
              } else {
                  console.log("Error in network request: ");
