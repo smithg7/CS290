@@ -58,8 +58,8 @@ function EditBtn(Eid)
     req.addEventListener('load', function () {
          if (req.status >= 200 && req.status < 400) {
             console.log(req.responseText);
-            document.write(req.responseText);
-            document.close();
+            //document.write(req.responseText);
+            //document.close();
             
          } else {
              console.log("Error in network request: ");
