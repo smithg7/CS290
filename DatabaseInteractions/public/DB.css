@@ -22,16 +22,23 @@ th {
     border-width:1px;
 }
 
-hiding {
+input.hiding {
 	visibility:hidden;
 	width:0px;
 }
 
-showing {
+input.showing {
 	visibility: visible;
 	width:100px;
 }
 
+div.hiding {
+	visibility:hidden;
+}
+
+div.showing {
+	visibility: visible;
+}
 showingMyButton {
 	visibility: visible;
 	width:20px;
