@@ -151,8 +151,8 @@ function PopulateTable(data)
         rowHTML += "<input type='hidden' id='Hweight" + data[row].id + "' value='"+data[row].weight+"' />";
         rowHTML += "<input type='hidden' id='Hdate" + data[row].id + "' value='"+data[row].date+"' />";
         rowHTML += "<input type='hidden' id='Hlbs" + data[row].id + "' value='"+data[row].lbs+"' />";
-        rowHTML += "<input type='text' id='newOne' value='"+data[row].weight+data[row].id+"' />";
-        rowHTML += "<input type='submit' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
+        rowHTML += "<input type='button' id='showHidden' value='Edit' onclick='showFields(" + data[row].id + ")' />";
+        rowHTML += "<input type='submit' style='visibility:hidden;' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
         rowHTML += "</form></td>";
 
         rowHTML += "<td><form id='DeleteForm"+data[row].id+"'>";
