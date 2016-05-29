@@ -127,8 +127,8 @@ function PopulateTable(data)
         rowHTML += "<td><input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
         rowHTML += "<input type='text' id='newOne' value='"+data[row].weight+data[row].id+"' />";
         rowHTML += "<input type='submit' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
-        rowHTML += "</form>";
-        rowHTML += "<form id='DeleteForm"+data[row].id+"'>";
+        rowHTML += "</td></form>";
+        rowHTML += "<td><form id='DeleteForm"+data[row].id+"'>";
         rowHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
 
         rowHTML += "<input type='submit' onclick='deleteBtn(" + data[row].id + ")' value='Delete' />";
