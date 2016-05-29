@@ -42,7 +42,7 @@ function bindButtons() {
 
 function EditBtn(Eid)
 {        
-    var req = new XMLHttpRequest();
+    var Editreq = new XMLHttpRequest();
     var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
     var payload = { EditBtn: null, id: null};
 
@@ -51,14 +51,14 @@ function EditBtn(Eid)
 
     
     //Request data via a post.
-    req.open('POST', url, true);
-    req.setRequestHeader('Content-Type', 'application/json');
+    Editreq.open('POST', url, true);
+    Editreq.setRequestHeader('Content-Type', 'application/json');
 
     //Add Event lister for the response.
-    req.addEventListener('load', function () {
-         if (req.status >= 200 && req.status < 400) {
-            console.log(req.responseText);
-            //document.write(req.responseText);
+    Editreq.addEventListener('load', function () {
+         if (Editreq.status >= 200 && Editreq.status < 400) {
+            console.log(Editreq.responseText);
+            //document.write(Editreq.responseText);
             //document.close();
             
          } else {
@@ -67,7 +67,7 @@ function EditBtn(Eid)
     });
 
     //Send the request with the data entered in the form.
-    req.send(JSON.stringify(payload));
+    Editreq.send(JSON.stringify(payload));
     event.preventDefault();
 }
 
