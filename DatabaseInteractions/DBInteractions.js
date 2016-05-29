@@ -71,19 +71,19 @@ app.post('/', function(req,res){
 
 
   //Check to see which button sent this get request
-  // if(req.body['EditBtn']){
-  //   var context = {};
-  //   context.dataList = qParams;
-  //   res.send(JSON.stringify(context));
-  //   return;
-  // }
+  if(req.body['EditBtn']){
+    var context = {};
+    context.dataList = qParams;
+    res.send(JSON.stringify(context));
+    return;
+  }
   
-  // if(req.body['DeleteBtn']){
-  //   var context = {};
-  //   context.dataList = qParams;
-  //   res.send(JSON.stringify(context));
-  //   return;
-  // }
+  if(req.body['DeleteBtn']){
+    var context = {};
+    context.dataList = qParams;
+    res.send(JSON.stringify(context));
+    return;
+  }
   //Send the qParams array to the Function to insert them into the database
   
 
@@ -107,8 +107,14 @@ app.post('/', function(req,res){
       next(err);
       return;
     }
-    context.test = "apple"+rows.length;
-    context.dataList = rows;
+    var rowformat = [];
+    for (var row in rows){
+      for (var col in row)
+      {
+        rowformat.push({'name':col,'value':row[col]});  
+      }
+    }
+    context.dataList = rowformat;
     res.send(JSON.stringify(context));
   });
 
