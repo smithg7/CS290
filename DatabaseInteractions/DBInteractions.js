@@ -77,9 +77,9 @@ app.post('/', function(req,res){
   if(req.body['EditBtn']){
     var context = {};
     var updateValues = [req.body["Ename"], req.body["reps"], req.body["weight"], req.body["date"], req.body["lbs"], req.body["id"]];
-    pool.query("UPDATE workouts SET name = ?, reps = ?, weight = ?, date = ?, lbs = ? WHERE id = ?",insertValues ,function(err, result){
+    pool.query("UPDATE workouts SET name = ?, reps = ?, weight = ?, date = ?, lbs = ? WHERE id = ?;",insertValues ,function(err, result){
       if(err){
-        next(err);
+        context.error = err;
         return;
       }
     });
@@ -102,7 +102,7 @@ app.post('/', function(req,res){
   *********************************************************/
   if(req.body['DeleteBtn']){
     var context = {};
-    pool.query("DELETE FROM workouts WHERE id = ?",[req.body["id"]] ,function(err, result){
+    pool.query("DELETE FROM workouts WHERE id = ?;",[req.body["id"]] ,function(err, result){
       if(err){
         next(err);
         return;
