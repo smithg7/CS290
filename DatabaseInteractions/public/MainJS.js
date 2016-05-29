@@ -134,7 +134,7 @@ function PopulateTable(data)
         buttonHTML += "<form id='DeleteForm"+data[row].id+"'>";
         buttonHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
 
-        buttonHTML += "<input type='submit' onclick='DeleteBtn(" + data[row].id + ")' value='Delete' />";
+        buttonHTML += "<input type='submit' onclick='deleteBtn(" + data[row].id + ")' value='Delete' />";
         buttonHTML += "</form>";
         cell6.innerHTML = buttonHTML;
     }
