@@ -49,11 +49,11 @@ app.post('/', function(req,res){
   }
 
   //Check to see which button sent this get request
-  if(req.body['EditBtn']){
-    var ctxt = {};
-    ctxt.dataList = {'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true};
-    res.render('edit', ctxt);
-  }
+  // if(req.body['EditBtn']){
+  //   var ctxt = {};
+  //   ctxt.dataList = {'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true};
+  //   res.render('edit', ctxt);
+  // }
   
   //Send the qParams array to the Function to insert them into the database
   
@@ -62,10 +62,10 @@ app.post('/', function(req,res){
   //An array of arrays?
 
   var context = {};
-  context.dataList = [{'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
-                      {'id':'2','Ename':'2','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
-                      {'id':'3','Ename':'3','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
-                      {'id':'4','Ename':'4','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}];
+  context = {'1':{'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
+                      '2':{'id':'2','Ename':'2','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
+                      '3':{'id':'3','Ename':'3','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
+                      '4':{'id':'4','Ename':'4','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}};
   res.type("text/plain");
   res.send('DB', JSON.stringify(context));
 });
