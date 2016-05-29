@@ -24,7 +24,6 @@ function bindButtons() {
         //Add Event lister for the response.
         req.addEventListener('load', function () {
              if (req.status >= 200 && req.status < 400) {
-                 console.log(req.responseText);
             //     //var response = JSON.parse(req.responseText);
             //     //console.log(JSON.parse(req.responseText));
 
@@ -33,10 +32,9 @@ function bindButtons() {
             //     console.log("Something worked.");
                 document.write(req.responseText);
                 document.close();
-                console.log("Something went right");
+                
              } else {
-                console.log("Something went wrong")
-            //     console.log("Error in network request: ");
+                 console.log("Error in network request: ");
              }
         });
 
@@ -45,4 +43,14 @@ function bindButtons() {
         event.preventDefault();
     });
 
+    var EditButtons = document.getElementsByClass('EditBtn');
+    for (var btn in EditButtons)
+    {
+        btn.addEventListener('click', function (event) {
+            console.log("dumb");
+            event.preventDefault();
+        });
+    }
+
+    
 };
