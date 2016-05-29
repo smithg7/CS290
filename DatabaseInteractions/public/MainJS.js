@@ -30,7 +30,7 @@ function bindButtons() {
                 //clear out the table and replace it with the database info
                 var DBTable = JSON.parse(req.responseText);
                 for (var row in DBTable) {
-                  console.log(JSON.stringify(DBTable[row]));
+                  console.log(JSON.stringify(DBTable[row].Ename));
                 }
                 
              } else {
