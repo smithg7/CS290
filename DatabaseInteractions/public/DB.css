@@ -1,7 +1,9 @@
-hiding {
-	visibility: collapse;
+input.hiding {
+	visibility:hidden;
+	width:0px;
 }
 
-showing {
+input.showing {
 	visibility: visible;
+	width:100px;
 }
