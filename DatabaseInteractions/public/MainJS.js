@@ -128,8 +128,8 @@ function PopulateTable(data)
         rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
         rowHTML += data[row].Ename + "</td>";
 
-        rowHTML += "<td><input type='text' class='hiding' id='Vreps" + data[row].id + "' value='";
-        rowHTML += data[row].reps + "' onchange='copyToHidden(" + data[row].id + ")' />";
+        rowHTML += "<td><p class='hiding'><input type='text' id='Vreps" + data[row].id + "' value='";
+        rowHTML += data[row].reps + "' onchange='copyToHidden(" + data[row].id + ")' /></p>";
         rowHTML += data[row].reps + "</td>";
 
         rowHTML += "<td><input type='text' style='visibility:hidden;' id='Vweight" + data[row].id + "' value='";
