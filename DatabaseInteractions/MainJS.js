@@ -43,14 +43,15 @@ function bindButtons() {
         event.preventDefault();
     });
 
-
+    console.log("hmm");
     var EditButtons = document.getElementsByClassName("EditBtn");
+
     for (var i = 0; i < EditButtons.length; i++) {
         EditButtons[i].addEventListener('click', function(event) {
             console.log("hmm...");
             event.preventDefault();
         });
-    }       
+    }
     // for (var btn in EditButtons)
     // {
 
