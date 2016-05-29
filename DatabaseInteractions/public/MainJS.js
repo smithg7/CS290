@@ -45,9 +45,9 @@ function bindButtons() {
   
 };
 
-function doStuff(e)
+function doStuff()
 {
-    console.log(e.TypeOf());
+    console.log("weird");
 
     event.preventDefault();
 }
