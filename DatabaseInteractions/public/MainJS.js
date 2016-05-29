@@ -24,12 +24,7 @@ function bindButtons() {
         //Add Event lister for the response.
         req.addEventListener('load', function () {
              if (req.status >= 200 && req.status < 400) {
-            //     //var response = JSON.parse(req.responseText);
-            //     //console.log(JSON.parse(req.responseText));
 
-            //     //Populate the result into the string.
-            //     var returnedData = JSON.parse(response.data);
-            //     console.log("Something worked.");
                 document.write(req.responseText);
                 document.close();
                 
@@ -46,14 +41,39 @@ function bindButtons() {
 };
 
 function EditBtn(Eid)
-{
-    console.log("ID to edit: " + Eid);
+{        
+    var req = new XMLHttpRequest();
+    var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
+    var payload = { EditBtn: null, id: null};
+
+    payload.EditBtn = "1";
+    payload.id = Eid;
+
+    
+    //Request data via a post.
+    req.open('POST', url, true);
+    req.setRequestHeader('Content-Type', 'application/json');
+
+    //Add Event lister for the response.
+    req.addEventListener('load', function () {
+         if (req.status >= 200 && req.status < 400) {
+
+            document.write(req.responseText);
+            document.close();
+            
+         } else {
+             console.log("Error in network request: ");
+         }
+    });
+
+    //Send the request with the data entered in the form.
+    req.send(JSON.stringify(payload));
     event.preventDefault();
 }
 
-function deleteBtn()
+function deleteBtn(Eid)
 {
-    console.log("weird");
 
+    console.log("ID to edit: " + Eid);
     event.preventDefault();
 }

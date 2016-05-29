@@ -37,6 +37,7 @@ app.get('/',function(req,res){
 //This route handles a POST request
 //and returns the get-loopback template
 app.post('/', function(req,res){
+  //Collect the parameters
   var qParams = [];
   //get all the body parameters
   for (var p in req.body){
@@ -45,6 +46,13 @@ app.post('/', function(req,res){
   //get all the query string parameters
   for (var p in req.query){
     qParams.push({'name':p,'value':req.query[p]});
+  }
+
+  //Check to see which button sent this get request
+  if(req.body['EditBtn']){
+    var ctxt = {};
+    ctxt.dataList = [{'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}];
+    res.render('edit', ctxt);
   }
   
   //Send the qParams array to the Function to insert them into the database
