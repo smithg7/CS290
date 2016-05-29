@@ -126,23 +126,23 @@ function PopulateTable(data)
         var newRow = pageTable.insertRow();
         var rowHTML = "<td><input type='text' class='hiding' id='Vname" + data[row].id + "' value='";
         rowHTML += data[row].Ename + "' onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += "<div id='nameData" + data[row].id + "'>" + data[row].Ename + "</div></td>";
+        rowHTML += "<div class='showing' id='nameData" + data[row].id + "'>" + data[row].Ename + "</div></td>";
 
         rowHTML += "<td><input type='text' class='hiding' id='Vreps" + data[row].id + "' value='";
         rowHTML += data[row].reps + "' onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += "<div id='repsData" + data[row].id + "'>" + data[row].reps + "</div></td>";
+        rowHTML += "<div class='showing' id='repsData" + data[row].id + "'>" + data[row].reps + "</div></td>";
 
         rowHTML += "<td><input type='text' class='hiding' id='Vweight" + data[row].id + "' value='";
         rowHTML += data[row].weight + "' onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += "<div id='weightData" + data[row].id + "'>" + data[row].weight + "</div></td>";
+        rowHTML += "<div class='showing' id='weightData" + data[row].id + "'>" + data[row].weight + "</div></td>";
 
         rowHTML += "<td><input type='text' class='hiding' id='Vdate" + data[row].id + "' value='";
         rowHTML += data[row].date + "' onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += "<div id='dateData" + data[row].id + "'>" + data[row].date + "</div></td>";
+        rowHTML += "<div class='showing' id='dateData" + data[row].id + "'>" + data[row].date + "</div></td>";
 
         rowHTML += "<td><input type='checkbox' class='hiding' id='Vlbs" + data[row].id + "' checked=";
         rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += "<div id='lbsData" + data[row].id + "'>" + data[row].lbs + "</div></td>";
+        rowHTML += "<div class='showing' id='lbsData" + data[row].id + "'>" + data[row].lbs + "</div></td>";
 
         rowHTML += "<td><form id='EditForm" + data[row].id + "'>";
         rowHTML += "<input type='hidden' id='Hname" + data[row].id + "' value='"+data[row].Ename+"' />";

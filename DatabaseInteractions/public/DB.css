@@ -22,12 +22,12 @@ th {
     border-width:1px;
 }
 
-input.hiding {
+hiding {
 	visibility:hidden;
 	width:0px;
 }
 
-input.showing {
+showing {
 	visibility: visible;
 	width:100px;
 }
