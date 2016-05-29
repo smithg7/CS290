@@ -71,27 +71,56 @@ app.post('/', function(req,res){
 
 
   //Check to see which button sent this get request
-  // if(req.body['EditBtn']){
-  //   var context = {};
-  //   context.dataList = qParams;
-  //   res.send(JSON.stringify(context));
-  //   return;
-  // }
-  
-  // if(req.body['DeleteBtn']){
-  //   var context = {};
-  //   context.dataList = qParams;
-  //   res.send(JSON.stringify(context));
-  //   return;
-  // }
-  //Send the qParams array to the Function to insert them into the database
-  
+  /*********************************************************
+  * EDIT query
+  *********************************************************/
+  if(req.body['EditBtn']){
+    var context = {};
+    var updateValues = [req.body["Ename"], req.body["reps"], req.body["weight"], req.body["date"], req.body["lbs"], req.body["id"]];
+    pool.query("UPDATE workouts SET name = ?, reps = ?, weight = ?, date = ?, lbs = ? WHERE id = ?",insertValues ,function(err, result){
+      if(err){
+        next(err);
+        return;
+      }
+    });
+      
+    
 
-  //return an array of items from the databse to populate the tables with
-  //An array of arrays?
+    pool.query('SELECT * FROM workouts;', function(err, rows, fields){
+      if(err){
+        next(err);
+        return;
+      }
+      context.dataList = rows;
+      res.send(JSON.stringify(context));
+    });
+    return;
+  }
+
+  /*********************************************************
+  * DELETE query
+  *********************************************************/
+  if(req.body['DeleteBtn']){
+    var context = {};
+    pool.query("DELETE FROM workouts WHERE id = ?",[req.body["id"]] ,function(err, result){
+      if(err){
+        next(err);
+        return;
+      }
+    });
+    pool.query('SELECT * FROM workouts;', function(err, rows, fields){
+      if(err){
+        next(err);
+        return;
+      }
+      context.dataList = rows;
+      res.send(JSON.stringify(context));
+    });
+    return;
+  }
+
 
   var context = {};
-  var myName = req.body["Ename"];
   var insertValues = [req.body["Ename"], req.body["reps"], req.body["weight"], req.body["date"], req.body["lbs"]];
   pool.query("INSERT INTO workouts (name, reps, weight, date, lbs) VALUES (?, ?, ?,?, ?)",insertValues ,function(err, result){
     if(err){
@@ -107,13 +136,6 @@ app.post('/', function(req,res){
       next(err);
       return;
     }
-    // var rowformat = [];
-    // for (var i=0; i<rows.length; i++){
-    //   for (var col in rows[i])
-    //   {
-    //     rowformat.push({col:rows[i][col]});  
-    //   }
-    // }
     context.dataList = rows;
     res.send(JSON.stringify(context));
   });
@@ -139,14 +161,3 @@ app.use(function(err, req, res, next){
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
-
-function SelectAllData()
-{
-    pool.query('SELECT * FROM workouts', function(err, rows, fields){
-    if(err){
-      next(err);
-      return;
-    }
-    return (JSON.stringify(rows));
-  });
-}
