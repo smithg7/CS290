@@ -2,16 +2,16 @@
 	<fieldset>
         <legend>Enter a Workout set</legend>
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="{{this.Ename}}"><br />
+        <input type="text" name="name" id="EditName" value="{{this.Ename}}"><br />
         <label for="reps">Reps</label>
-        <input type="text" name="reps" id="reps" value="{{this.reps}}"><br />
+        <input type="text" name="reps" id="EditReps" value="{{this.reps}}"><br />
         <label for="weight">Weight</label>
-        <input type="text" name="weight" id="weight" value="{{this.weight}}"><br />
+        <input type="text" name="weight" id="EditWeight" value="{{this.weight}}"><br />
         <label for="Date">Date</label>
-        <input type="text" name="date" id="date" value="{{this.date}}"><br />
+        <input type="text" name="date" id="EditDate" value="{{this.date}}"><br />
         <label for="lbs">Lbs (default is Kg)</label>
-        <input type="checkbox" name="lbs" id="lbs" checked={{this.lbs}}><br />
-        <input type="submit" id="editSubmit">
+        <input type="checkbox" name="lbs" id="EditLbs" checked={{this.lbs}}><br />
+        <input type="submit" onclick="editSubmit()" id="editSubmit">
 	</fieldset>
 
 </form>

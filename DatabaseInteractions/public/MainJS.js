@@ -77,3 +77,9 @@ function deleteBtn(Eid)
     console.log("ID to edit: " + Eid);
     event.preventDefault();
 }
+
+function EditSubmit()
+{
+    console.log("edit submitted");
+    event.preventDefault();
+}
