@@ -93,7 +93,7 @@ app.post('/', function(req,res){
   var context = {};
   var myName = req.body["Ename"];
   var insertValues = [req.body["Ename"], req.body["reps"], req.body["weight"], req.body["date"], req.body["lbs"]];
-  mysql.pool.query("INSERT INTO workouts (name, reps, weight, date, lbs) VALUES (?,?,?,?,?)",insertValues ,function(err, result){
+  mysql.pool.query("INSERT INTO workouts (name, reps, weight, date, lbs) VALUES ('a', 2, 2,'1/2/2016', true)",insertValues ,function(err, result){
     if(err){
       next(err);
       return;
