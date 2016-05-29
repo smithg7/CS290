@@ -62,26 +62,26 @@ app.post('/', function(req,res){
   var qParams = [];
   //get all the body parameters
   for (var p in req.body){
-    qParams.push({p:req.query[p]});
+    qParams.push({'name':p,'value':req.query[p]});
   }
   //get all the query string parameters
   for (var p in req.query){
-    qParams.push({p:req.query[p]});
-    //qParams.push({'name':p,'value':req.query[p]});
+    qParams.push({'name':p,'value':req.query[p]});
   }
 
 
   //Check to see which button sent this get request
   if(req.body['EditBtn']){
     var context = {};
-    res.send(JSON.stringify(qParams));
+    context.dataList = qParams;
+    res.send(JSON.stringify(context));
     return;
   }
   
   if(req.body['DeleteBtn']){
     var context = {};
-
-    res.send(JSON.stringify(qParams));
+    context.dataList = qParams;
+    res.send(JSON.stringify(context));
     return;
   }
   //Send the qParams array to the Function to insert them into the database
@@ -91,9 +91,9 @@ app.post('/', function(req,res){
   //An array of arrays?
 
   var context = {};
-
+  context.dataList = qParams; 
   res.type("text/plain");
-  res.send(JSON.stringify(qParams));
+  res.send(JSON.stringify(context));
 });
 
 
