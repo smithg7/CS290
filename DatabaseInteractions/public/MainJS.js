@@ -45,9 +45,9 @@ function bindButtons() {
   
 };
 
-function EditBtn(e)
+function EditBtn()
 {
-    console.log(e.sender.className);
+    console.log("no");
     event.preventDefault();
 }
 
