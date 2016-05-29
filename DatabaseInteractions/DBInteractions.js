@@ -41,7 +41,7 @@ app.post('/', function(req,res){
   var qParams = [];
   //get all the body parameters
   for (var p in req.body){
-    qParams.push({p:req.body[p]});
+    qParams.push({'name':p,'value':req.query[p]});
   }
   //get all the query string parameters
   for (var p in req.query){
@@ -55,7 +55,7 @@ app.post('/', function(req,res){
   //An array of arrays?
 
   var context = {};
-  context.dataList = qParams;
+  context.dataList = [{'id':'1','name':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, {'id':'1','name':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, {'id':'1','name':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, {'id':'1','name':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}];
   res.render('DB', context);
 });
 
