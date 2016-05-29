@@ -20,13 +20,13 @@
 	    	<td>{{this.date}}</td>
 	    	<td>{{this.lbs}}</td>
 	    	<td>
-	    		<input type="submit" onclick="doStuff()" value="Edit" />
+	    		<input type="submit" onclick="EditBtn()" value="Edit" />
 	    	<td>
 	    	</form>
 	    	<td>
 	    		<form>
 	    		<input type="hidden" id="id" value="{{this.id}}" class="DeleteBtn" />
-	    		<input type="submit" value="Delete" />
+	    		<input type="submit" onclick="DeleteBtn()" value="Delete" />
 	    		</form>
 	    	</td>
 	    </tr>

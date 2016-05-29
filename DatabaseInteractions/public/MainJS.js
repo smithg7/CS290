@@ -45,7 +45,13 @@ function bindButtons() {
   
 };
 
-function doStuff()
+function EditBtn(e)
+{
+    console.log(e.sender.className);
+    event.preventDefault();
+}
+
+function deleteBtn()
 {
     console.log("weird");
 
