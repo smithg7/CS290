@@ -59,8 +59,6 @@ function EditBtn(Eid)
     Editreq.addEventListener('load', function () {
          if (Editreq.status >= 200 && Editreq.status < 400) {
             console.log(Editreq.responseText);
-            //document.write(Editreq.responseText);
-            //document.close();
             PopulateTable(JSON.parse(Editreq.responseText));
             
          } else {
@@ -75,8 +73,30 @@ function EditBtn(Eid)
 
 function deleteBtn(Eid)
 {
+    var Deletereq = new XMLHttpRequest();
+    var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
+    var payload = { DeleteBtn: null, id: null};
 
-    console.log("ID to edit: " + Eid);
+    payload.DeleteBtn = "1";
+    payload.id = Eid;
+    
+    //Request data via a post.
+    Deletereq.open('POST', url, true);
+    Deletereq.setRequestHeader('Content-Type', 'application/json');
+
+    //Add Event lister for the response.
+    Deletereq.addEventListener('load', function () {
+         if (Deletereq.status >= 200 && Deletereq.status < 400) {
+            console.log(Deletereq.responseText);
+            PopulateTable(JSON.parse(Deletereq.responseText));
+            
+         } else {
+             console.log("Error in network request: ");
+         }
+    });
+
+    //Send the request with the data entered in the form.
+    Deletereq.send(JSON.stringify(payload));
     event.preventDefault();
 }
 
@@ -110,6 +130,11 @@ function PopulateTable(data)
         buttonHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
 
         buttonHTML += "<input type='submit' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
+        buttonHTML += "</form>";
+        buttonHTML += "<form id='DeleteForm"+data[row].id+"'>";
+        buttonHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
+
+        buttonHTML += "<input type='submit' onclick='DeleteBtn(" + data[row].id + ")' value='Delete' />";
         buttonHTML += "</form>";
         cell6.innerHTML = buttonHTML;
     }

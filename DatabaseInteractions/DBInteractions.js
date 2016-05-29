@@ -59,6 +59,14 @@ app.post('/', function(req,res){
     return;
   }
   
+  if(req.body['DeleteBtn']){
+    var context = {};
+    context = {'1':{'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
+               '2':{'id':'2','Ename':'2','reps':'2', 'weight':'215', 'date':'1', 'lbs':false}, 
+               '4':{'id':'4','Ename':'4','reps':'2', 'weight':'215', 'date':'1', 'lbs':false}};
+    res.send(JSON.stringify(context));
+    return;
+  }
   //Send the qParams array to the Function to insert them into the database
   
 
