@@ -45,7 +45,6 @@ function bindButtons() {
 function EditBtn(Eid)
 { 
     var thisForm = document.getElementById('EditForm'+Eid);
-    console.log("The value you typed is: " + thisForm.elements["newOne"].value);
     console.log("The value you typed is: " + thisForm.elements["Hname"+Eid].value);
     console.log("The value you typed is: " + thisForm.elements["Hreps"+Eid].value);
     console.log("The value you typed is: " + thisForm.elements["Hweight"+Eid].value);
