@@ -38,6 +38,7 @@ div.hiding {
 }
 
 div.showing {
+	float:right;
 	visibility: visible;
 }
 showingMyButton {
