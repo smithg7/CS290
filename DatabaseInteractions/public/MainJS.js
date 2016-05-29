@@ -56,10 +56,15 @@ function EditBtn(Eid)
 
     var Editreq = new XMLHttpRequest();
     var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
-    var payload = { EditBtn: null, id: null};
+    var payload = { EditBtn: null, id: null, Ename: null, reps: null, weight: null, date: null, lbs: null};
 
     payload.EditBtn = "1";
     payload.id = Eid;
+    payload.Ename = thisForm.elements["Hname"+Eid].value;
+    payload.reps = thisForm.elements["Hreps"+Eid].value;
+    payload.weight = thisForm.elements["Hweight"+Eid].value;
+    payload.date = thisForm.elements["Hdate"+Eid].value;
+    payload.lbs = thisForm.elements["Hlbs"+Eid].value;
     
     //Request data via a post.
     Editreq.open('POST', url, true);
