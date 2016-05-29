@@ -61,6 +61,7 @@ function EditBtn(Eid)
             console.log(Editreq.responseText);
             //document.write(Editreq.responseText);
             //document.close();
+            PopulateTable(JSON.parse(Editreq.responseText));
             
          } else {
              console.log("Error in network request: ");

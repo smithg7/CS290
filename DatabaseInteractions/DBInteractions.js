@@ -50,9 +50,12 @@ app.post('/', function(req,res){
 
   //Check to see which button sent this get request
   if(req.body['EditBtn']){
-    var ctxt = {};
-    ctxt.dataList = {'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true};
-    res.send("You send me an ID of: " + req.body['id']);
+  var context = {};
+  context = {'1':{'id':'1','Ename':'1','reps':'2', 'weight':'215', 'date':'1', 'lbs':true}, 
+                      '2':{'id':'2','Ename':'2','reps':'2', 'weight':'215', 'date':'1', 'lbs':false}, 
+                      '3':{'id':'3','Ename':'Bigger name','reps':'20', 'weight':'180', 'date':'1/2/33', 'lbs':true}, 
+                      '4':{'id':'4','Ename':'4','reps':'2', 'weight':'215', 'date':'1', 'lbs':false}};
+    res.send(JSON.stringify(context));
     return;
   }
   
