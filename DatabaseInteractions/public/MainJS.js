@@ -102,7 +102,7 @@ function PopulateTable(data)
         cell4.innerHTML = data[row].date
         cell5.innerHTML = data[row].lbs
         var buttonHTML = "<form id='EditForm"+data[row].id+"'>";
-        buttonHTML += "<input type='hidden' id='Eid' value='"+"taco"+"' />";
+        buttonHTML += "<input type='hidden' id='Eid' value='"+data[row].weight+data[row].id+"' />";
 
         buttonHTML += "<input type='submit' onclick='EditBtn(" + data[row].id + ")' value='Edit' />";
         buttonHTML += "</form>";
