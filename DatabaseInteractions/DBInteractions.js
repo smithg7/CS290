@@ -107,7 +107,7 @@ app.post('/', function(req,res){
       next(err);
       return;
     }
-    context.test = rows.length;
+    context.test = rows[0];
   });
   context.dataList = qParams;
   
