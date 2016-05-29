@@ -108,12 +108,12 @@ app.post('/', function(req,res){
       return;
     }
     var rowformat = [];
-    // for (var i=0; i<rows.length; i++){
-    //   for (var col in rows[i])
-    //   {
-    //     rowformat.push({'name':col,'value':rows[i][col]});  
-    //   }
-    // }
+    for (var i=0; i<rows.length; i++){
+      for (var col in rows[i])
+      {
+        rowformat.push({col:rows[i][col]});  
+      }
+    }
     context.dataList = rowformat;
     res.send(JSON.stringify(context));
   });
