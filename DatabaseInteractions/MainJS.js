@@ -43,14 +43,21 @@ function bindButtons() {
         event.preventDefault();
     });
 
-    var EditButtons = document.getElementsByClassName('EditBtn');
-    for (var btn in EditButtons)
-    {
-        btn.addEventListener('click', function (event) {
-            console.log("dumb");
-            event.preventDefault();
+    var EditButtons = document.getElementsByClassName("EditBtn");
+
+    for (var i = 0; i < EditButtons.length; i++) {
+        EditButtons[i].addEventListener('click', function() {
+            console.log("hmm...")
         });
-    }
+    }       
+    // for (var btn in EditButtons)
+    // {
+
+    //     //btn.addEventListener('click', function (event) {
+    //         console.log("dumb");
+    //         event.preventDefault();
+    //     //});
+    // }
 
     
 };
