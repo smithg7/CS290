@@ -44,6 +44,8 @@ function bindButtons() {
 
 function EditBtn(Eid)
 { 
+    var thisForm = document.getElementById('EditForm'+Eid);
+    console.log("The value of this ID is: " + thisForm.elements["id"]);
     var Editreq = new XMLHttpRequest();
     var url = 'http://ec2-52-36-65-162.us-west-2.compute.amazonaws.com:4000';
     var payload = { EditBtn: null, id: null};
