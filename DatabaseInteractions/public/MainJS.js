@@ -66,7 +66,7 @@ function EditBtn(Eid)
     //Add Event lister for the response.
     Editreq.addEventListener('load', function () {
          if (Editreq.status >= 200 && Editreq.status < 400) {
-            console.log(Editreq.responseText);
+            console.log("Result of Edit: " + Editreq.responseText);
             PopulateTable(JSON.parse(Editreq.responseText));
             
          } else {
