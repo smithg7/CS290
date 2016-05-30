@@ -77,7 +77,7 @@ app.post('/', function(req,res){
   if(req.body['EditBtn']){
     var context = {};
     var updateValues = [req.body["Ename"], req.body["reps"], req.body["weight"], req.body["date"], req.body["lbs"], req.body["id"]];
-    pool.query("UPDATE workouts SET name = ?, reps = ?, weight = ?, date = ?, lbs = ? WHERE id = ?;",insertValues ,function(err, result){
+    pool.query("UPDATE workouts SET name = ?, reps = ?, weight = ?, date = ?, lbs = ? WHERE id = ?;",updateValues ,function(err, result){
       if(err){
         context.error = err;
         return;
