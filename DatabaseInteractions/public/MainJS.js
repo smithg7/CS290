@@ -147,8 +147,12 @@ function PopulateTable(data)
         rowHTML += "<div class='showing' id='dateData" + data[row].id + "'>" + data[row].date + "</div></td>";
 
         console.log("This is data[row].lbs:" + data[row].lbs);
-        rowHTML += "<td><input type='checkbox' id='Vlbs" + data[row].id + "' checked=";
-        rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' disabled/>";
+        rowHTML += "<td><input type='checkbox' id='Vlbs" + data[row].id + "'";
+        if (data[row].lbs == true)
+        {
+            rowHTML += " checked "
+        }
+        rowHTML += "onchange='copyToHidden(" + data[row].id + ")' disabled/>";
         rowHTML += "</td>";
 
         rowHTML += "<td><form id='EditForm" + data[row].id + "'>";
@@ -156,7 +160,12 @@ function PopulateTable(data)
         rowHTML += "<input type='hidden' id='Hreps" + data[row].id + "' value='"+data[row].reps+"' />";
         rowHTML += "<input type='hidden' id='Hweight" + data[row].id + "' value='"+data[row].weight+"' />";
         rowHTML += "<input type='hidden' id='Hdate" + data[row].id + "' value='"+data[row].date+"' />";
-        rowHTML += "<input type='hidden' id='Hlbs" + data[row].id + "' checked='"+data[row].lbs+"' />";
+        rowHTML += "<input type='hidden' id='Hlbs" + data[row].id + "'";
+        if (data[row].lbs == true)
+        {
+            rowHTML += " checked "
+        }
+        rowHTML += "/>";
         rowHTML += "<input type='button' id='showHidden" + data[row].id + "' value='Edit' onclick='showFields(" + data[row].id + ")' />";
         rowHTML += "<input type='submit' id='EditSubmit" + data[row].id + "' class='hiding' onclick='EditBtn(" + data[row].id + ")' value='Save' />";
         rowHTML += "</form></td>";
