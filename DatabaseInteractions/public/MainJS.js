@@ -149,7 +149,7 @@ function PopulateTable(data)
         console.log("This is data[row].lbs:" + data[row].lbs);
         rowHTML += "<td><input type='checkbox' class='hiding' id='Vlbs" + data[row].id + "' checked=";
         rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += "<div class='showing' id='lbsData" + data[row].id + "'><input checked=false type='checkbox' disabled /></div></td>";
+        rowHTML += "<div class='showing' id='lbsData" + data[row].id + "'><input checked=" + data[row].lbs + " type='checkbox' /></div></td>";
 
         rowHTML += "<td><form id='EditForm" + data[row].id + "'>";
         rowHTML += "<input type='hidden' id='Hname" + data[row].id + "' value='"+data[row].Ename+"' />";
