@@ -56,7 +56,7 @@ function EditBtn(Eid)
     payload.reps = thisForm.elements["Hreps"+Eid].value;
     payload.weight = thisForm.elements["Hweight"+Eid].value;
     payload.date = thisForm.elements["Hdate"+Eid].value;
-    payload.lbs = thisForm.elements["Hlbs"+Eid].value;
+    payload.lbs = thisForm.elements["Hlbs"+Eid].checked;
     
     console.log("Updating: " + JSON.stringify(payload));
     //Request data via a post.
