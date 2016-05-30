@@ -140,8 +140,8 @@ function PopulateTable(data)
 
 
         rowHTML += "<td><input type='checkbox' class='hiding' id='Vlbs" + data[row].id + "' checked=";
-        rowHTML += data[row].lbs == 0 ? false : true + " onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += "<div class='showing' id='lbsData" + data[row].id + "'><input type='checkbox' checked=" + data[row].lbs == 0 ? false : true + " disabled /></div></td>";
+        rowHTML += (data[row].lbs == 0 ? false : true) + " onchange='copyToHidden(" + data[row].id + ")' />";
+        rowHTML += "<div class='showing' id='lbsData" + data[row].id + "'><input type='checkbox' checked=" + (data[row].lbs == 0 ? false : true) + " disabled /></div></td>";
 
         rowHTML += "<td><form id='EditForm" + data[row].id + "'>";
         rowHTML += "<input type='hidden' id='Hname" + data[row].id + "' value='"+data[row].Ename+"' />";
