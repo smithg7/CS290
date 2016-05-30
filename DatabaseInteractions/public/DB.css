@@ -45,3 +45,9 @@ showingMyButton {
 	visibility: visible;
 	width:20px;
 }
+CBhiding {
+	disabled:true;
+}
+CBshowing {
+	disabled:false;
+}

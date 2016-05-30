@@ -147,9 +147,9 @@ function PopulateTable(data)
         rowHTML += "<div class='showing' id='dateData" + data[row].id + "'>" + data[row].date + "</div></td>";
 
         console.log("This is data[row].lbs:" + data[row].lbs);
-        rowHTML += "<td><input type='checkbox' class='hiding' id='Vlbs" + data[row].id + "' checked=";
-        rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' />";
-        rowHTML += "<div class='showing' id='lbsData" + data[row].id + "'><input checked=" + data[row].lbs + " type='checkbox' /></div></td>";
+        rowHTML += "<td><input type='checkbox' class='CBhiding' id='Vlbs" + data[row].id + "' checked=";
+        rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' disabled/>";
+        rowHTML += "</td>";
 
         rowHTML += "<td><form id='EditForm" + data[row].id + "'>";
         rowHTML += "<input type='hidden' id='Hname" + data[row].id + "' value='"+data[row].Ename+"' />";
@@ -176,14 +176,13 @@ function showFields(rowID)
     document.getElementById("Vreps"+rowID).className = "showing";
     document.getElementById("Vweight"+rowID).className = "showing";
     document.getElementById("Vdate"+rowID).className = "showing";
-    document.getElementById("Vlbs"+rowID).className = "showing";
+    document.getElementById("Vlbs"+rowID).className = "CBshowing";
     document.getElementById("EditSubmit"+rowID).className = "showingMyButton";
     document.getElementById("showHidden"+rowID).className = "hiding";
     document.getElementById("nameData"+rowID).className = "hiding";
     document.getElementById("repsData"+rowID).className = "hiding";
     document.getElementById("weightData"+rowID).className = "hiding";
     document.getElementById("dateData"+rowID).className = "hiding";
-    document.getElementById("lbsData"+rowID).className = "hiding";
 }
 
 function copyToHidden(rowNum)
