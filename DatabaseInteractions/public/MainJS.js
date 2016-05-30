@@ -147,7 +147,7 @@ function PopulateTable(data)
         rowHTML += "<div class='showing' id='dateData" + data[row].id + "'>" + data[row].date + "</div></td>";
 
         console.log("This is data[row].lbs:" + data[row].lbs);
-        rowHTML += "<td><input type='checkbox' class='CBhiding' id='Vlbs" + data[row].id + "' checked=";
+        rowHTML += "<td><input type='checkbox' id='Vlbs" + data[row].id + "' checked=";
         rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' disabled/>";
         rowHTML += "</td>";
 
@@ -176,7 +176,7 @@ function showFields(rowID)
     document.getElementById("Vreps"+rowID).className = "showing";
     document.getElementById("Vweight"+rowID).className = "showing";
     document.getElementById("Vdate"+rowID).className = "showing";
-    document.getElementById("Vlbs"+rowID).className = "CBshowing";
+    document.getElementById("Vlbs"+rowID).disabled = false;
     document.getElementById("EditSubmit"+rowID).className = "showingMyButton";
     document.getElementById("showHidden"+rowID).className = "hiding";
     document.getElementById("nameData"+rowID).className = "hiding";
