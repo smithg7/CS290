@@ -141,7 +141,7 @@ function PopulateTable(data)
         if (data[row].lbs == 0 || data[row].lbs == false) 
             data[row].lbs = false;
         else 
-            data[row] = true;
+            data[row].lbs = true;
 
         rowHTML += "<td><input type='checkbox' class='hiding' id='Vlbs" + data[row].id + "' checked=";
         rowHTML += data[row].lbs + " onchange='copyToHidden(" + data[row].id + ")' />";
