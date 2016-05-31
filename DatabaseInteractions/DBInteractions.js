@@ -85,7 +85,7 @@ app.post('/', function(req,res){
     //Show the table's current contents
     pool.query('SELECT * FROM workouts;', function(err, rows, fields){
       if(err){
-        next(err);
+        context.error = err;
         return;
       }
       context.dataList = rows;
@@ -101,7 +101,7 @@ app.post('/', function(req,res){
     var context = {};
     pool.query("DELETE FROM workouts WHERE id = ?;",[req.body["id"]] ,function(err, result){
       if(err){
-        next(err);
+        context.error = err;
         return;
       }
     });
@@ -109,7 +109,7 @@ app.post('/', function(req,res){
     //Show the table's current contents
     pool.query('SELECT * FROM workouts;', function(err, rows, fields){
       if(err){
-        next(err);
+        context.error = err;
         return;
       }
       context.dataList = rows;
@@ -126,7 +126,7 @@ app.post('/', function(req,res){
   var insertValues = [req.body["Ename"], req.body["reps"], req.body["weight"], req.body["date"], req.body["lbs"]];
   pool.query("INSERT INTO workouts (name, reps, weight, date, lbs) VALUES (?, ?, ?,?, ?)",insertValues ,function(err, result){
     if(err){
-      next(err);
+      context.error = err;
       return;
     }
   });
@@ -135,7 +135,7 @@ app.post('/', function(req,res){
   res.type("text/plain");
   pool.query('SELECT * FROM workouts;', function(err, rows, fields){
     if(err){
-      next(err);
+      context.error = err;
       return;
     }
     context.dataList = rows;
