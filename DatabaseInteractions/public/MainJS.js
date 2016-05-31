@@ -17,7 +17,7 @@ function bindButtons() {
         payload.date = document.getElementById('date').value;
         payload.lbs = document.getElementById('lbs').checked;
 
-        if (Ename == "" || Ename == null)
+        if (payload.Ename == "" || payload.Ename == null)
         {
             alert("A name must be given for the exercise.");
             return;
