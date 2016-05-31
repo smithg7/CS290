@@ -1,6 +1,6 @@
 // CS290 Web Development
 // Author: Gary Smith
-// 
+// This file is the main javascript for the buttons on the DBinteractions page.
 
 document.addEventListener('DOMContentLoaded', bindButtons);
 
@@ -48,6 +48,9 @@ function bindButtons() {
   
 };
 
+/********************************************
+Handles the Edit Button
+********************************************/
 function EditBtn(Eid)
 { 
     var thisForm = document.getElementById('EditForm'+Eid);
@@ -85,6 +88,9 @@ function EditBtn(Eid)
     event.preventDefault();
 }
 
+/********************************************
+Handles the Delete Button
+********************************************/
 function deleteBtn(Eid)
 {
     var Deletereq = new XMLHttpRequest();
@@ -114,7 +120,10 @@ function deleteBtn(Eid)
     event.preventDefault();
 }
 
-
+/********************************************
+Populates the table with the data passed to it
+via a JSON string.
+********************************************/
 function PopulateTable(data)
 {
     var pageTable = document.getElementById('dataTable');
@@ -125,7 +134,7 @@ function PopulateTable(data)
        pageTable.deleteRow(i);
     }
     data = data.dataList;
-    //Add all the new rows back in
+    //Loop through all the rows and build the columns for every row
     for (var row in data) {
         if (data[row].lbs == 0 || data[row] == false)
         {
@@ -185,6 +194,9 @@ function PopulateTable(data)
     }
 }
 
+/********************************************
+Unhide the fields to allow for editng
+********************************************/
 function showFields(rowID)
 {
     document.getElementById("Vname"+rowID).className = "showing";
@@ -200,6 +212,11 @@ function showFields(rowID)
     document.getElementById("dateData"+rowID).className = "hiding";
 }
 
+/********************************************
+Copies all the visible and editable fields to the hidden
+ones in the form to allow for submission to the POST
+methods.
+********************************************/
 function copyToHidden(rowNum)
 {
     var hiddenField = document.getElementById('Hname'+rowNum);

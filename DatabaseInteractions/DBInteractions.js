@@ -1,6 +1,7 @@
 /**********************************************
 Name: Gary Smith
 CS290 HW Assignment: Database Interactions
+This file is the controller for the server requests
 ***********************************************/
 
 var express = require('express');
@@ -24,10 +25,11 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 4000);
 
+//Provide the public folder access to the public
 app.use(express.static('public'));
 
-//This route handles a GET request
-//and returns the get-loopback template
+//This route handles the initial GET request for the page
+//It resets the database table and shows the start page.
 app.get('/',function(req,res){
   var qParams = [];
   //Get all the parameters in the query string
@@ -36,8 +38,9 @@ app.get('/',function(req,res){
   }
   //We can ignore body parameters since this is a GET request
   var context = {};
-  //context.dataList = qParams;
 
+  //Initiating query to drop the table and recreate it.
+  //Code copied from class example.
   pool.query("DROP TABLE IF EXISTS workouts", function(err){ //replace your connection pool with the your variable containing the connection pool
     var createString = "CREATE TABLE workouts("+
       "id INT PRIMARY KEY AUTO_INCREMENT,"+
@@ -48,15 +51,12 @@ app.get('/',function(req,res){
       "lbs BOOLEAN)";
     pool.query(createString, function(err){
       res.render('start', context);
-    })
+    });
   });
-
-  
 });
 
 
-//This route handles a POST request
-//and returns the get-loopback template
+//This route handles the POST requests
 app.post('/', function(req,res){
   //Collect the parameters
   var qParams = [];
@@ -69,10 +69,8 @@ app.post('/', function(req,res){
     qParams.push({'name':p,'value':req.query[p]});
   }
 
-
-  //Check to see which button sent this get request
   /*********************************************************
-  * EDIT query
+  * EDIT/SAVE button - UPDATE query
   *********************************************************/
   if(req.body['EditBtn']){
     var context = {};
@@ -84,8 +82,7 @@ app.post('/', function(req,res){
       }
     });
       
-    
-
+    //Show the table's current contents
     pool.query('SELECT * FROM workouts;', function(err, rows, fields){
       if(err){
         next(err);
@@ -108,6 +105,8 @@ app.post('/', function(req,res){
         return;
       }
     });
+
+    //Show the table's current contents
     pool.query('SELECT * FROM workouts;', function(err, rows, fields){
       if(err){
         next(err);
@@ -120,6 +119,9 @@ app.post('/', function(req,res){
   }
 
 
+  /*********************************************************
+  * INSERT query
+  *********************************************************/
   var context = {};
   var insertValues = [req.body["Ename"], req.body["reps"], req.body["weight"], req.body["date"], req.body["lbs"]];
   pool.query("INSERT INTO workouts (name, reps, weight, date, lbs) VALUES (?, ?, ?,?, ?)",insertValues ,function(err, result){
@@ -129,7 +131,7 @@ app.post('/', function(req,res){
     }
   });
     
-  
+  //Show the table's current contents
   res.type("text/plain");
   pool.query('SELECT * FROM workouts;', function(err, rows, fields){
     if(err){
@@ -143,12 +145,13 @@ app.post('/', function(req,res){
 });
 
 
-
+//Return the 404 page error
 app.use(function(req,res){
   res.status(404);
   res.render('404');
 });
 
+//Return the 500 error if there was a server error
 app.use(function(err, req, res, next){
   console.error(err.stack);
   res.type('plain/text');
@@ -157,7 +160,7 @@ app.use(function(err, req, res, next){
 });
 
 
-
+//Send a note to the console when the node is run.
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
