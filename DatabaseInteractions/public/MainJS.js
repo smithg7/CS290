@@ -16,6 +16,12 @@ function bindButtons() {
         payload.weight = document.getElementById('weight').value;
         payload.date = document.getElementById('date').value;
         payload.lbs = document.getElementById('lbs').checked;
+
+        if (Ename == "" || Ename == null)
+        {
+            alert("A name must be given for the exercise.");
+            return;
+        }
         console.log("Inserting: " + JSON.stringify(payload));
         //Request data via a post.
         req.open('POST', url, true);
